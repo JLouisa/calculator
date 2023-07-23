@@ -23,18 +23,15 @@ function calcFactorial(num1) {
 
 // Calculate Fibonacci Sequence
 function calcFibonacci(num1) {
-    if(num1 < 0) return "OOPS";
+    if(num1 < 0) {return "OOPS"};
 
     let seqFib = [0, 1];
     let next = 0;
 
     for(i = 0; i < num1; i++) {
         next = seqFib[i] + seqFib[i+1]
-        seqFib.push(next);
-    }
-    
-    return seqFib[num1];
-}
+        seqFib.push(next);}
+        return seqFib[num1];}
 
 // Input holders
 var theNum1;
@@ -114,17 +111,5 @@ getFib.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = 
 getClear.addEventListener('click', () => {mem1 = ""; mem2 = ""; theOperator = ""; displayNum.textContent = 0});
 getEquals.addEventListener('click', () => {theNum2 = mem1; mem1 = ""; displayNum.textContent = operate(theNum1, theOperator, theNum2);});
 
-//Pseudo Code
-//Add first numbers to string then to array
-//Add operator to array
-//Add second numbers to string then array
 //Add 0 standby blinking to display
 //Add second mini-display to see progress
-
-//Add if mem1 is undefined, use mem1 else use mem2
-
-// Make the calculator work! 
-// You’ll need to store the first number that is input into the calculator 
-// when a user presses an operator, 
-// and also save which operation has been chosen and then operate() 
-// on them when the user presses the “=” key.
