@@ -69,7 +69,7 @@ getNum9.addEventListener('click', () => {mem1 += "9"; displayNum.textContent = m
 
 //Operators
 getAdd.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '+'; displayNum.textContent = theOperator;});
-getSub.addEventListener('click', () => {{theOperator = '-'; displayNum.textContent = theOperator;}});
+getSub.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '-'; displayNum.textContent = theOperator;});
 getMulti.addEventListener('click', () => {{theOperator = '*'; displayNum.textContent = "x";}});
 getDivide.addEventListener('click', () => {{theOperator = '/'; displayNum.textContent = "÷";}});
 getFact.addEventListener('click', () => {{theOperator = '!'; displayNum.textContent = theOperator;}});
