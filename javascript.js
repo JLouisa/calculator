@@ -1,8 +1,8 @@
 // Calculate additions
-function calcAdd(num1, num2) {return num1 + num2};
+function calcAdd(num1, num2) {return +num1 + +num2};
 
 // Calculate Subtraction
-function calcSub(num1, num2) {return num1 - num2};
+function calcSub(num1, num2) {return num1 - num2;};
 
 // Calculate Multiplication
 function calcMulti(num1, num2) {return num1 * num2};
@@ -10,9 +10,9 @@ function calcMulti(num1, num2) {return num1 * num2};
 // Calculate Division
 function calcDivide(num1, num2) {return num1 / num2};
 
-let theNum1;
-let theNum2;
-let theOperator;
+var theNum1;
+var theNum2;
+var theOperator;
 
 function operate(n1, op, n2) {
     if(op == '+') {return calcAdd(n1,n2)};
@@ -68,7 +68,7 @@ getNum8.addEventListener('click', () => {mem1 += "8"; displayNum.textContent = m
 getNum9.addEventListener('click', () => {mem1 += "9"; displayNum.textContent = mem1;});
 
 //Operators
-getAdd.addEventListener('click', () => {theOperator = '+'; displayNum.textContent = theOperator;});
+getAdd.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '+'; displayNum.textContent = theOperator;});
 getSub.addEventListener('click', () => {{theOperator = '-'; displayNum.textContent = theOperator;}});
 getMulti.addEventListener('click', () => {{theOperator = '*'; displayNum.textContent = "x";}});
 getDivide.addEventListener('click', () => {{theOperator = '/'; displayNum.textContent = "÷";}});
@@ -78,7 +78,7 @@ getFib.addEventListener('click', () => {{theOperator = 'Fib';}});
 
 //Other
 getClear.addEventListener('click', () => {mem1 = ""; mem2 = ""; theOperator = ""; displayNum.textContent = 0});
-getEquals.addEventListener('click', () => {getEquals = '='; operate(theNum1, theOperator, theNum2);});
+getEquals.addEventListener('click', () => {theNum2 = mem1; mem1 = ""; displayNum.textContent = operate(theNum1, theOperator, theNum2);});
 
 //Pseudo Code
 //Add first numbers to string then to array
