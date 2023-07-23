@@ -23,15 +23,16 @@ function operate(n1, op, n2) {
 }
 
 let mem1 = "";
-let mem2;
+let mem2 = "";
 
 // Calculator interface
 const displayNum = document.querySelector('.display');
 
-// let getNum = "";
+//Can't get the loop to work...
+// const getNum = [];
 // for(i = 0; i <= 9; i++){
 //     getNum[i] = document.querySelector(`.nr${i}`);
-//     getNum[i].addEventListener('click', () => {mem1 += `${i}`; displayNum.textContent = mem1;});
+//     // getNum[i].addEventListener('click', () => {mem1 += `${i}`; displayNum.textContent = mem1;});
 // }
 
 let getNum1 = document.querySelector('.nr1');
@@ -55,11 +56,26 @@ getNum9.addEventListener('click', () => {mem1 += "9"; displayNum.textContent = m
 let getNum0 = document.querySelector('.nr0');
 getNum0.addEventListener('click', () => {mem1 += "0"; displayNum.textContent = mem1;});
 
+let getEquals = document.querySelector('.row5col5');
+getEquals.addEventListener('click', () => {getEquals = '='; operate(theNum1, theOperator, theNum2);});
+
 let getAdd = document.querySelector('.row5col4');
 getAdd.addEventListener('click', () => {theOperator = '+'; displayNum.textContent = theOperator;});
 
-let getEquals = document.querySelector('.row5col5');
-getEquals.addEventListener('click', () => {getEquals = '='; operate(theNum1, theOperator, theNum2);});
+let getSub = document.querySelector('.row5col3');
+getSub.addEventListener('click', () => {{theOperator = '-'; displayNum.textContent = theOperator;}});
+
+let getMulti = document.querySelector('.row5col2');
+getMulti.addEventListener('click', () => {{theOperator = '*'; displayNum.textContent = "x";}});
+
+let getDivide = document.querySelector('.row5col1');
+getDivide.addEventListener('click', () => {{theOperator = '/'; displayNum.textContent = "÷";}});
+
+let getFact = document.querySelector('.row4col1');
+getFact.addEventListener('click', () => {{theOperator = '!'; displayNum.textContent = theOperator;}});
+
+let getPerc = document.querySelector('.row3col1');
+getPerc.addEventListener('click', () => {{theOperator = '%'; displayNum.textContent = theOperator;}});
 
 let getClear = document.querySelector('.row2col1');
 getClear.addEventListener('click', () => {mem1 = ""; mem2 = ""; displayNum.textContent = 0});
