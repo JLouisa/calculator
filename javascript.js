@@ -42,3 +42,4 @@ getEquals.addEventListener('click', () => {getEquals = '='; operate(theNum1, the
 //Add first numbers to string then to array
 //Add operator to array
 //Add second numbers to string then array
+//Add 0 standby blinking to display
