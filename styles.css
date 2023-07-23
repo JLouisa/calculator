@@ -23,6 +23,13 @@ h1 {
 }
 
 .square {
+    display: flex;
     padding: 40px;
     border: 1px solid black
+}
+
+#calc {
+    display: flex;
+    border: 1px solid red;
+    padding: 10px;
 }
