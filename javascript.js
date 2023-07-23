@@ -52,6 +52,7 @@ function operate(n1, op, n2) {
 function operate2(n1, op) {
     if(op == '!') {return calcFactorial(n1)};
     if(op == 'Fib') {return calcFibonacci(n1)};
+    if(op == '%') {return calcPerc(n1)};
     return 'Error';
 }
 
@@ -106,7 +107,7 @@ getSub.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = 
 getMulti.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '*'; displayNum.textContent = "x";});
 getDivide.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '/'; displayNum.textContent = "÷";});
 getFact.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '!'; displayNum.textContent = operate2(theNum1, theOperator);});
-getPerc.addEventListener('click', () => {{theOperator = '%'; displayNum.textContent = theOperator;}});
+getPerc.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '%'; displayNum.textContent = operate2(theNum1, theOperator);});
 getFib.addEventListener('click', () => {{theOperator = 'Fib';}});
 
 //Other
