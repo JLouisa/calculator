@@ -77,9 +77,11 @@ getFact.addEventListener('click', () => {{theOperator = '!'; displayNum.textCont
 let getPerc = document.querySelector('.row3col1');
 getPerc.addEventListener('click', () => {{theOperator = '%'; displayNum.textContent = theOperator;}});
 
+let getFib = document.querySelector('.row2col5');
+getFib.addEventListener('click', () => {{theOperator = 'Fib';}});
+
 let getClear = document.querySelector('.row2col1');
 getClear.addEventListener('click', () => {mem1 = ""; mem2 = ""; displayNum.textContent = 0});
-
 
 //Pseudo Code
 //Add first numbers to string then to array
