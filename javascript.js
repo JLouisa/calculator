@@ -9,3 +9,7 @@ function calcMulti(num1, num2) {return num1 * num2};
 
 // Calculate Division
 function calcDivide(num1, num2) {return num1 / num2};
+
+let getNum1;
+let getNum2;
+let theOperator;
