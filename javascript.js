@@ -10,6 +10,9 @@ function calcMulti(num1, num2) {return num1 * num2};
 // Calculate Division
 function calcDivide(num1, num2) {return num1 / num2};
 
+// Calculate Percentage
+function calcPerc(num1) {return num1 / 100;};
+
 // Calculate Factorial
 function calcFactorial(num1) {
     if(num1 == 0) {return 1}
