@@ -10,8 +10,8 @@ function calcMulti(num1, num2) {return num1 * num2};
 // Calculate Division
 function calcDivide(num1, num2) {return num1 / num2};
 
-let getNum1;
-let getNum2;
+let theNum1;
+let theNum2;
 let theOperator;
 
 function operate(n1, op, n2) {
@@ -24,29 +24,5 @@ function operate(n1, op, n2) {
 
 console.log(operate(98, '*', 100));
 
-
-
-
-
-
-
-
-
-
-
-
-// //Grid Generator
-// const container = document.querySelector('.mid')
-
-// let divs = [];
-// for(n = 1; n <= 5; n++) {
-//     divs[n] = document.createElement('div');
-//     divs[n].classList.add(`head${n}`, 'divs');
-//     container.appendChild(divs[n]);
-
-//         let square = [];
-//         for(let i = 1; i <= 5; i++) {
-//             square[i] = document.createElement('div');
-//             square[i].classList.add(`row${n}col${i}`, 'square');
-//             divs[n].appendChild(square[i]);}
-// }
+const getNum1 = document.querySelector('.row2col4');
+getNum1.addEventListener('click', () => {theNum1 = 1})
