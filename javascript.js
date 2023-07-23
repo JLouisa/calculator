@@ -22,7 +22,6 @@ function operate(n1, op, n2) {
     return 'Error';
 }
 
-console.log(operate(98, '*', 100));
-
 const getNum1 = document.querySelector('.row2col4');
-getNum1.addEventListener('click', () => {theNum1 = 1})
+const displayNum = document.querySelector('.display');
+getNum1.addEventListener('click', () => {theNum1 = 1; displayNum.textContent = theNum1;});
