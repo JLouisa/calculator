@@ -1,6 +1,21 @@
 h1 {
-    color: purple;
+    color: rebeccapurple;
     font-size: 100px;
     font-weight: 700;
+    font-family: sans-serif;
     text-align: center;
+    padding: 30px 60px;
+
+}
+
+* {
+    border: 2px solid red;
+}
+
+.webPage {
+    display: flex;
+}
+
+.side {
+    display: flex;
 }
