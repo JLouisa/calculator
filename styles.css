@@ -21,16 +21,7 @@ h1 {
     flex: auto;
 }
 
-.square {
-    display: flex;
-    padding: 40px;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin: 5px;
-    background-color: white;
-}
-
-#calc {
+#calcFull {
     display: flex;
     flex-direction: column;
     border: 3px solid black;
@@ -42,18 +33,33 @@ h1 {
     background-color: rgba(156, 160, 165, 0.514);
 }
 
+.display {
+    border: 3px solid black;
+    padding: 50px 30px;
+    margin: 20px 7px;
+    text-align: right;
+    background-color: white;
+}
+
 .calcBody {
     display: flex;
+}
+
+.square {
+    display: flex;
+    padding: 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: white;
 }
 
 .row2col5 {
     padding-bottom: 74px;
 }
 
-.display {
-    border: 3px solid black;
-    padding: 50px 25px;
-    margin: 20px;
-    text-align: right;
-    background-color: white;
+.row3col1 {
+    padding-left: 35px;
+    padding-right: 35px;
 }
+
