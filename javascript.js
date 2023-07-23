@@ -10,8 +10,20 @@ function calcMulti(num1, num2) {return num1 * num2};
 // Calculate Division
 function calcDivide(num1, num2) {return num1 / num2};
 
-// Calculate Fibonacci sequence
-function fibonacci(num1) {
+// Calculate Factorial
+function calcFactorial(num1) {
+    if(num1 == 0) {return 1}
+    else {
+    let c = num1
+    for(i = num1; i > 1; i--){
+      c = c * (i-1);
+    }
+      return c;
+    }
+  };
+
+// Calculate Fibonacci Sequence
+function calcFibonacci(num1) {
     if(num1 < 0) return "OOPS";
 
     let seqFib = [0, 1];
@@ -25,18 +37,7 @@ function fibonacci(num1) {
     return seqFib[num1];
 }
 
-// Calculate Factorial
-function factorial(num1) {
-    if(num1 == 0) {return 1}
-    else {
-    let c = num1
-    for(i = num1; i > 1; i--){
-      c = c * (i-1);
-    }
-      return c;
-    }
-  };
-
+// Input holders
 var theNum1;
 var theNum2;
 var theOperator;
@@ -46,6 +47,8 @@ function operate(n1, op, n2) {
     if(op == '-') {return calcSub(n1,n2)};
     if(op == '*') {return calcMulti(n1,n2)};
     if(op == '/') {return calcDivide(n1,n2)};
+    if(op == '!') {return calcFactorial(n1)};
+    if(op == 'Fib') {return calcFibonacci(n1)};
     return 'Error';
 }
 
@@ -99,7 +102,7 @@ getAdd.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = 
 getSub.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '-'; displayNum.textContent = theOperator;});
 getMulti.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '*'; displayNum.textContent = "x";});
 getDivide.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '/'; displayNum.textContent = "÷";});
-getFact.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '!'; displayNum.textContent = theOperator;});
+getFact.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '!';});
 getPerc.addEventListener('click', () => {{theOperator = '%'; displayNum.textContent = theOperator;}});
 getFib.addEventListener('click', () => {{theOperator = 'Fib';}});
 
