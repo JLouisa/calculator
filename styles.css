@@ -55,6 +55,7 @@ h1 {
     text-align: center;
     justify-content: center;
     align-items: center;
+    cursor: default !important;
 }
 
 .row2col5 {
