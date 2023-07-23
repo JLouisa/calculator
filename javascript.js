@@ -25,6 +25,18 @@ function fibonacci(num1) {
     return seqFib[num1];
 }
 
+// Calculate Factorial
+function factorial(num1) {
+    if(num1 == 0) {return 1}
+    else {
+    let c = num1
+    for(i = num1; i > 1; i--){
+      c = c * (i-1);
+    }
+      return c;
+    }
+  };
+
 var theNum1;
 var theNum2;
 var theOperator;
