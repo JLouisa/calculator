@@ -108,7 +108,7 @@ getMulti.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator 
 getDivide.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '/'; displayNum.textContent = "÷";});
 getFact.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '!'; displayNum.textContent = operate2(theNum1, theOperator);});
 getPerc.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '%'; displayNum.textContent = operate2(theNum1, theOperator);});
-getFib.addEventListener('click', () => {{theOperator = 'Fib';}});
+getFib.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = 'Fib'; displayNum.textContent = operate2(theNum1, theOperator);});
 
 //Other
 getClear.addEventListener('click', () => {mem1 = ""; mem2 = ""; theOperator = ""; displayNum.textContent = 0});
