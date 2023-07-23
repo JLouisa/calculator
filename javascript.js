@@ -11,19 +11,15 @@ function calcMulti(num1, num2) {return num1 * num2};
 function calcDivide(num1, num2) {return num1 / num2};
 
 // Calculate Percentage
-function calcPerc(num1) {return num1 / 100;};
+function calcPerc(num1) {return num1 / 100};
 
 // Calculate Factorial
 function calcFactorial(num1) {
     if(num1 == 0) {return 1}
-    else {
-    let c = num1
-    for(i = num1; i > 1; i--){
-      c = c * (i-1);
-    }
-      return c;
-    }
-  };
+    else {let c = num1;
+            for(i = num1; i > 1; i--)
+            {c = c * (i-1);} 
+            return c;}};
 
 // Calculate Fibonacci Sequence
 function calcFibonacci(num1) {
@@ -50,6 +46,10 @@ function operate(n1, op, n2) {
     if(op == '-') {return calcSub(n1,n2)};
     if(op == '*') {return calcMulti(n1,n2)};
     if(op == '/') {return calcDivide(n1,n2)};
+    return 'Error';
+}
+
+function operate2(n1, op) {
     if(op == '!') {return calcFactorial(n1)};
     if(op == 'Fib') {return calcFibonacci(n1)};
     return 'Error';
@@ -105,7 +105,7 @@ getAdd.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = 
 getSub.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '-'; displayNum.textContent = theOperator;});
 getMulti.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '*'; displayNum.textContent = "x";});
 getDivide.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '/'; displayNum.textContent = "÷";});
-getFact.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '!';});
+getFact.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '!'; displayNum.textContent = operate2(theNum1, theOperator);});
 getPerc.addEventListener('click', () => {{theOperator = '%'; displayNum.textContent = theOperator;}});
 getFib.addEventListener('click', () => {{theOperator = 'Fib';}});
 
