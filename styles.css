@@ -17,7 +17,7 @@ h1 {
 
 .mid {
     display: flex;
-    border: 2px solid rgb(68, 0, 255);
+    /* border: 2px solid rgb(68, 0, 255); */
     justify-content: center;
     flex: auto;
 }
@@ -25,11 +25,31 @@ h1 {
 .square {
     display: flex;
     padding: 40px;
-    border: 1px solid black
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px;
 }
 
 #calc {
     display: flex;
-    border: 1px solid red;
+    flex-direction: column;
+    border: 3px solid black;
     padding: 10px;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.calcBody {
+    display: flex;
+}
+
+.row2col5 {
+    padding-bottom: 74px;
+}
+
+.display {
+    border: 3px solid black;
+    padding: 50px 25px;
+    margin: 20px;
+    text-align: right;
 }
