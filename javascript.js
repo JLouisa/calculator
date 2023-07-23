@@ -22,6 +22,23 @@ function operate(n1, op, n2) {
     return 'Error';
 }
 
-const getNum1 = document.querySelector('.row2col4');
+// Calculator interface
 const displayNum = document.querySelector('.display');
+
+let getNum1 = document.querySelector('.row2col4');
 getNum1.addEventListener('click', () => {theNum1 = 1; displayNum.textContent = theNum1;});
+
+let getAdd = document.querySelector('.row5col4');
+getAdd.addEventListener('click', () => {theOperator = '+'; displayNum.textContent = theOperator;});
+
+let getNum2 = document.querySelector('.row3col4');
+getNum2.addEventListener('click', () => {theNum2 = 2; displayNum.textContent = theNum2;});
+
+let getEquals = document.querySelector('.row5col5');
+getEquals.addEventListener('click', () => {getEquals = '='; operate(theNum1, theOperator, theNum2);});
+
+
+//Pseudo Code
+//Add first numbers to string then to array
+//Add operator to array
+//Add second numbers to string then array
