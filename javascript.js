@@ -10,6 +10,21 @@ function calcMulti(num1, num2) {return num1 * num2};
 // Calculate Division
 function calcDivide(num1, num2) {return num1 / num2};
 
+// Calculate Fibonacci sequence
+function fibonacci(num1) {
+    if(num1 < 0) return "OOPS";
+
+    let seqFib = [0, 1];
+    let next = 0;
+
+    for(i = 0; i < num1; i++) {
+        next = seqFib[i] + seqFib[i+1]
+        seqFib.push(next);
+    }
+    
+    return seqFib[num1];
+}
+
 var theNum1;
 var theNum2;
 var theOperator;
@@ -72,7 +87,7 @@ getAdd.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = 
 getSub.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '-'; displayNum.textContent = theOperator;});
 getMulti.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '*'; displayNum.textContent = "x";});
 getDivide.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '/'; displayNum.textContent = "÷";});
-getFact.addEventListener('click', () => {{theOperator = '!'; displayNum.textContent = theOperator;}});
+getFact.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '!'; displayNum.textContent = theOperator;});
 getPerc.addEventListener('click', () => {{theOperator = '%'; displayNum.textContent = theOperator;}});
 getFib.addEventListener('click', () => {{theOperator = 'Fib';}});
 
