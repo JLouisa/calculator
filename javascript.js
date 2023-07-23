@@ -8,7 +8,7 @@ function calcSub(num1, num2) {return num1 - num2;};
 function calcMulti(num1, num2) {return num1 * num2};
 
 // Calculate Division
-function calcDivide(num1, num2) {return num1 / num2};
+function calcDivide(num1, num2) {if(num2 == 0) {return "lol, try again..."} else {return num1 / num2}};
 
 // Calculate Percentage
 function calcPerc(num1) {return num1 / 100};
@@ -23,15 +23,18 @@ function calcFactorial(num1) {
 
 // Calculate Fibonacci Sequence
 function calcFibonacci(num1) {
-    if(num1 < 0) {return "OOPS"};
+    if(num1 < 0) return "OOPS";
 
     let seqFib = [0, 1];
     let next = 0;
 
     for(i = 0; i < num1; i++) {
         next = seqFib[i] + seqFib[i+1]
-        seqFib.push(next);}
-        return seqFib[num1];}
+        seqFib.push(next);
+    }
+    
+    return seqFib[num1];
+}
 
 // Input holders
 var theNum1;
@@ -108,8 +111,13 @@ getPerc.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator =
 getFib.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = 'Fib'; displayNum.textContent = operate2(theNum1, theOperator);});
 
 //Other
-getClear.addEventListener('click', () => {mem1 = ""; mem2 = ""; theOperator = ""; displayNum.textContent = 0});
+getClear.addEventListener('click', () => {theNum1 = null; theNum2 = null; mem1 = ""; mem2 = ""; theOperator = ""; displayNum.textContent = 0});
 getEquals.addEventListener('click', () => {theNum2 = mem1; mem1 = ""; displayNum.textContent = operate(theNum1, theOperator, theNum2);});
 
+//Pseudo Code
+//Add first numbers to string then to array
+//Add operator to array
+//Add second numbers to string then array
 //Add 0 standby blinking to display
 //Add second mini-display to see progress
+//Add visual input
