@@ -23,3 +23,30 @@ function operate(n1, op, n2) {
 }
 
 console.log(operate(98, '*', 100));
+
+
+
+
+
+
+
+
+
+
+
+
+// //Grid Generator
+// const container = document.querySelector('.mid')
+
+// let divs = [];
+// for(n = 1; n <= 5; n++) {
+//     divs[n] = document.createElement('div');
+//     divs[n].classList.add(`head${n}`, 'divs');
+//     container.appendChild(divs[n]);
+
+//         let square = [];
+//         for(let i = 1; i <= 5; i++) {
+//             square[i] = document.createElement('div');
+//             square[i].classList.add(`row${n}col${i}`, 'square');
+//             divs[n].appendChild(square[i]);}
+// }

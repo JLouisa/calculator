@@ -5,17 +5,24 @@ h1 {
     font-family: sans-serif;
     text-align: center;
     padding: 30px 60px;
-
 }
 
 * {
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 
 .webPage {
     display: flex;
 }
 
-.side {
+.mid {
     display: flex;
+    border: 2px solid rgb(68, 0, 255);
+    justify-content: center;
+    flex: auto;
+}
+
+.square {
+    padding: 40px;
+    border: 1px solid black
 }
