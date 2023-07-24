@@ -93,14 +93,14 @@ getNum8.addEventListener('click', () => {showDisplay("8")});
 getNum9.addEventListener('click', () => {showDisplay("9")});
 
 //Operators
-getAdd.addEventListener('click', () => {operator('+')});
-getSub.addEventListener('click', () => {operator('-')});
-getMulti.addEventListener('click', () => {operator('*')});
-getDivide.addEventListener('click', () => {operator('/')});
-getFact.addEventListener('click', () => {operator('!')});
-getPerc.addEventListener('click', () => {operator('%')});
-getFib.addEventListener('click', () => {operator('Fib')});
-getEquals.addEventListener('click', () => {theNum2 = displayNum; showEqual(); clearMemory()});
+getAdd.addEventListener('click', () => {operator('+'); theOperator = '+';});
+getSub.addEventListener('click', () => {operator('-'); theOperator = '-';});
+getMulti.addEventListener('click', () => {operator('*'); theOperator = '*';});
+getDivide.addEventListener('click', () => {operator('/'); theOperator = '/';});
+getFact.addEventListener('click', () => {operator('!'); theOperator = '!';});
+getPerc.addEventListener('click', () => {operator('%'); theOperator = '%';});
+getFib.addEventListener('click', () => {operator('Fib'); theOperator = 'Fib';});
+getEquals.addEventListener('click', () => {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory()});
 getClear.addEventListener('click', () => {clearMemory(); display.textContent = 0; result = ''});
 
 //------------------------------------------------------------------
@@ -112,8 +112,11 @@ function showDisplay(num) {
 
 //Operators function
 function findShowOperator(op) {
-    if(usedOperator === true) {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2);}
-    else {theOperator = op;
+    if(usedOperator === true && op == '+' )      {display.textContent = operate(theNum1, theOperator, theNum2); console.log(theOperator)}
+    else if(usedOperator === true && op ==  '-') {display.textContent = operate(theNum1, theOperator, theNum2); console.log(theOperator)}
+    else if(usedOperator === true && op ==  '*') {display.textContent = operate(theNum1, theOperator, theNum2); console.log(theOperator)}
+    else if(usedOperator === true && op ==  '/') {display.textContent = operate(theNum1, theOperator, theNum2); console.log(theOperator)}
+    else {
     if(op == '+' || op == '-') {display.textContent = theOperator;}
     if(op == '*') {display.textContent = "x"};
     if(op == '/') {display.textContent = "÷"};
@@ -140,6 +143,7 @@ function operator(n) {
 
     else if(usedOperator === true) {
             theNum2 = displayNum;
+            displayNum = '';
             findShowOperator(n);
     }
     else {
@@ -171,10 +175,3 @@ function clearMemory() {
     displayNum = '';
     usedOperator = false;
 }
-
-//1 Choose first number  = mem1
-//2 Choose operator  = theOperator
-//3 choose second number  = mem2
-
-
-// 3 + 3 x => 9
