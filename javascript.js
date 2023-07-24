@@ -114,7 +114,7 @@ function showDisplay(num) {
 function findShowOperator(op) {
     if(usedOperator === true && op == '+' ) {display.textContent = operate(theNum1, theOperator, theNum2)}
     if(usedOperator === true && op ==  '-') {display.textContent = operate(theNum1, theOperator, theNum2)}
-    if(usedOperator === true && op ==  '*') {display.textContent = operate(theNum1, theOperator, theNum2)}
+    if(usedOperator === true && op ==  '*') {display.textContent = operate(theNum1, theOperator, theNum2);console.log('here1');}
     if(usedOperator === true && op ==  '/') {display.textContent = operate(theNum1, theOperator, theNum2)}
     if(usedOperator === true && op ==  '!') {display.textContent = operate2(result, theOperator); clearMemory()}
     if(usedOperator === true && op ==  '%') {display.textContent = operate2(result, theOperator); clearMemory()}
@@ -150,25 +150,28 @@ function operator(n) {
             theNum1 = result;
             displayNum = '';
             findShowOperator2(n);
+            console.log('O1');
 }
     else if(usedOperator === true && result != '') {
             theNum1 = result;
             theNum2 = displayNum;
             displayNum = '';
-            theOperator = n;
-            findShowOperator(n);
+            theOperator = n; console.log('O2');
+            findShowOperator3(n);
 }
 
     else if(usedOperator === true) {
             theNum2 = displayNum;
             displayNum = '';
             findShowOperator2(n);
+            console.log('O3');
     }
     else {
             theNum1 = displayNum;
             displayNum = '';
             findShowOperator3(n);
             useOperator();
+            console.log('O4');
 }
 }; 
 
@@ -191,7 +194,7 @@ function clearMemory() {
     mem2 = '';
     theOperator = "";
     displayNum = '';
-    usedOperator = false; console.log("Here3");
+    usedOperator = false;
 }
 
 
