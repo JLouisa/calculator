@@ -85,13 +85,13 @@ getNum8.addEventListener('click', () => {showDisplay("8")});
 getNum9.addEventListener('click', () => {showDisplay("9")});
 
 //Operators
-getAdd.addEventListener('click', () => {useOperator(); showOperator('+')});
-getSub.addEventListener('click', () => {useOperator(); showOperator('-')});
-getMulti.addEventListener('click', () => {useOperator(); showOperator('*')});
-getDivide.addEventListener('click', () => {useOperator(); showOperator('/')});
-getFact.addEventListener('click', () => {useOperator(); showOperator('!')});
-getPerc.addEventListener('click', () => {useOperator(); showOperator('%')});
-getFib.addEventListener('click', () => {useOperator(); showOperator('Fib')});
+getAdd.addEventListener('click', () => {showOperator('+')});
+getSub.addEventListener('click', () => {showOperator('-')});
+getMulti.addEventListener('click', () => {showOperator('*')});
+getDivide.addEventListener('click', () => {showOperator('/')});
+getFact.addEventListener('click', () => {showOperator('!')});
+getPerc.addEventListener('click', () => {showOperator('%')});
+getFib.addEventListener('click', () => {showOperator('Fib')});
 
 // Number Display
 function showDisplay(num) {mem1 += num; displayNum.textContent = mem1};
@@ -103,16 +103,11 @@ function useOperator() {
 
 //Find operator
 function showOperator(n) { 
-    if(result !== '') {
-        theNum1 = result;
-        theNum2 = mem1;
-        mem1 = '';}
-    else { 
-        theNum1 = mem1;
-        mem2 = mem1;
-        mem1 ='';
-    }
+    theNum1 = mem1;
+    mem2 = mem1;
+    mem1 ='';
     findOperator(n);
+    useOperator();
 }; 
 
 //Operators function
@@ -125,16 +120,7 @@ function findOperator(op) {
     };
 
 //Clear all variables
-getClear.addEventListener('click', () => {
-    theNum1 = ''; 
-    theNum2 = ''; 
-    mem1 = ''; 
-    mem2 = ''; 
-    theOperator = "";
-    result = '';
-    usedOperator = false;
-    displayNum.textContent = 0;
-});
+getClear.addEventListener('click', () => {theNum1 = ''; theNum2 = ''; mem1 = ''; mem2 = ''; theOperator = ""; result = ''; usedOperator = false; displayNum.textContent = 0;});
 
 function showEqual() {
     theNum2 = mem1;
@@ -151,22 +137,4 @@ getEquals.addEventListener('click', () => {showEqual()});
 //Add 0 standby blinking to display
 //Add second mini-display to see progress
 //Add visual input
-
-
-// // Create Interface variables
-// function createVariables() {
-//     var accounts = [];
-  
-//     for (var i = 0; i <= 20; ++i) {
-//         accounts[i] = "whatever";
-//     }
-  
-//     return accounts;
-// }
-
-// let test1 = '1';
-// let test2 = '';
-
-// console.log(test1 === test2)
-
    
