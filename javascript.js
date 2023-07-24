@@ -1,3 +1,9 @@
+//Pseudo Code
+//Add 0 standby blinking to display
+//Add second mini-display to see progress
+//Add visual input
+//Add punctuation in result
+
 // Calculate additions
 function calcAdd(num1, num2) {result = +num1 + +num2; return result};
 
@@ -83,13 +89,17 @@ getNum8.addEventListener('click', () => {showDisplay("8")});
 getNum9.addEventListener('click', () => {showDisplay("9")});
 
 //Operators
-getAdd.addEventListener('click', () => {showOperator('+')});
-getSub.addEventListener('click', () => {showOperator('-')});
-getMulti.addEventListener('click', () => {showOperator('*')});
-getDivide.addEventListener('click', () => {showOperator('/')});
-getFact.addEventListener('click', () => {showOperator('!')});
-getPerc.addEventListener('click', () => {showOperator('%')});
-getFib.addEventListener('click', () => {showOperator('Fib')});
+getAdd.addEventListener('click', () => {Operator('+')});
+getSub.addEventListener('click', () => {Operator('-')});
+getMulti.addEventListener('click', () => {Operator('*')});
+getDivide.addEventListener('click', () => {Operator('/')});
+getFact.addEventListener('click', () => {Operator('!')});
+getPerc.addEventListener('click', () => {Operator('%')});
+getFib.addEventListener('click', () => {Operator('Fib')});
+getEquals.addEventListener('click', () => {showEqual()});
+getClear.addEventListener('click', () => {theNum1 = ''; theNum2 = ''; mem1 = ''; mem2 = ''; theOperator = ""; result = ''; usedOperator = false; displayNum.textContent = 0;});
+
+//------------------------------------------------------------------
 
 // Number Display
 function showDisplay(num) {mem1 += num; displayNum.textContent = mem1};
@@ -100,7 +110,7 @@ function useOperator() {
 }
 
 //Find operator
-function showOperator(n) { 
+function Operator(n) { 
     theNum1 = mem1;
     mem2 = mem1;
     mem1 ='';
@@ -117,23 +127,14 @@ function findOperator(op) {
     if(op == '!' || op == '%' || op == 'Fib') {displayNum.textContent = operate2(theNum1, theOperator)}
     };
 
-//Clear all variables
-getClear.addEventListener('click', () => {theNum1 = ''; theNum2 = ''; mem1 = ''; mem2 = ''; theOperator = ""; result = ''; usedOperator = false; displayNum.textContent = 0;});
-
+// Equals calculation
 function showEqual() {
     theNum2 = mem1;
     mem1 = ''; 
     displayNum.textContent = operate(theNum1, theOperator, theNum2);
 }
 
-getEquals.addEventListener('click', () => {showEqual()});
 
-//Pseudo Code
-//Add first numbers to string then to array
-//Add operator to array
-//Add second numbers to string then array
-//Add 0 standby blinking to display
-//Add second mini-display to see progress
-//Add visual input
-//Add punctuation in result
+
+
    
