@@ -107,20 +107,6 @@ function showDisplay(num) {
     displayNum += num; display.textContent = displayNum;
 };
 
-//Operator used
-function useOperator() {
-    usedOperator = true;
-}
-
-//Find operator
-function operator(n) {
-    mem1 = displayNum;
-    theNum1 = mem1;
-    displayNum = '';
-    findShowOperator(n);
-    useOperator();
-}; 
-
 //Operators function
 function findShowOperator(op) {
     theOperator = op;
@@ -129,17 +115,45 @@ function findShowOperator(op) {
     if(op == '/') {display.textContent = "÷"};
     if(op == '!' || op == '%' || op == 'Fib') 
     {display.textContent = operate2(theNum1, theOperator)}
+    if(usedOperator === true) {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2);}
 };
+
+//Operator used
+function useOperator() {
+    usedOperator = true;
+}
+
+//Find operator
+function operator(n) {
+    if(usedOperator === true && result != '') {
+        mem1 = result;
+        theNum1 = mem1;
+        displayNum = '';
+        findShowOperator(n);
+        }
+    else if(usedOperator === true) {
+            mem2 = displayNum;
+            theNum2 = mem2;
+            findShowOperator(n);
+    }
+    else {
+            mem1 = displayNum;
+            theNum1 = mem1;
+            displayNum = '';
+            findShowOperator(n);
+            useOperator();
+}
+}; 
 
 // Equals calculation
 function showEqual() {
     mem2 = displayNum;
-    displayNum = '';
     theNum2 = mem2;
+    displayNum = '';
     display.textContent = operate(theNum1, theOperator, theNum2);
 }
 
-
-
-
-   
+//Sequence
+function calcSeq() {
+    if(usedOperator === true) {showEqual()}
+}
