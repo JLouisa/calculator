@@ -34,6 +34,7 @@ let mem1 = "";
 let mem2 = "";
 
 let result ='';
+let displayNum = '';
 let usedOperator = false;
 
 //Operate point to function
@@ -53,7 +54,7 @@ function operate2(n1, op) {
 }
 
 // Calculator interface
-const displayNum = document.querySelector('.display');
+const display = document.querySelector('.display');
 
 let getNum0 = document.querySelector('.nr0');
 let getNum1 = document.querySelector('.nr1');
@@ -97,12 +98,14 @@ getFact.addEventListener('click', () => {operator('!')});
 getPerc.addEventListener('click', () => {operator('%')});
 getFib.addEventListener('click', () => {operator('Fib')});
 getEquals.addEventListener('click', () => {showEqual()});
-getClear.addEventListener('click', () => {theNum1 = ''; theNum2 = ''; mem1 = ''; mem2 = ''; theOperator = ""; result = ''; usedOperator = false; displayNum.textContent = 0;});
+getClear.addEventListener('click', () => {theNum1 = ''; theNum2 = ''; mem1 = ''; mem2 = ''; theOperator = ""; result = ''; displayNum = ''; usedOperator = false; display.textContent = 0;});
 
 //------------------------------------------------------------------
 
 // Number Display
-function showDisplay(num) {mem1 += num; displayNum.textContent = mem1};
+function showDisplay(num) {
+    displayNum += num; display.textContent = displayNum;
+};
 
 //Operator used
 function useOperator() {
@@ -110,10 +113,10 @@ function useOperator() {
 }
 
 //Find operator
-function operator(n) { 
+function operator(n) {
+    mem1 = displayNum;
     theNum1 = mem1;
-    mem2 = mem1;
-    mem1 ='';
+    displayNum = '';
     findShowOperator(n);
     useOperator();
 }; 
@@ -121,17 +124,17 @@ function operator(n) {
 //Operators function
 function findShowOperator(op) {
     theOperator = op;
-    if(op == '+' || op == '-') {displayNum.textContent = theOperator;}
-    if(op == '*') {displayNum.textContent = "x"};
-    if(op == '/') {displayNum.textContent = "÷"};
-    if(op == '!' || op == '%' || op == 'Fib') {displayNum.textContent = operate2(theNum1, theOperator)}
+    if(op == '+' || op == '-') {display.textContent = theOperator;}
+    if(op == '*') {display.textContent = "x"};
+    if(op == '/') {display.textContent = "÷"};
+    if(op == '!' || op == '%' || op == 'Fib') {display.textContent = operate2(theNum1, theOperator)}
     };
 
 // Equals calculation
 function showEqual() {
     theNum2 = mem1;
     mem1 = ''; 
-    displayNum.textContent = operate(theNum1, theOperator, theNum2);
+    display.textContent = operate(theNum1, theOperator, theNum2);
 }
 
 
