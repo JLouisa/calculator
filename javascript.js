@@ -14,33 +14,20 @@ function calcDivide(num1, num2) {if(num2 == 0) {return "lol, try again..."} else
 function calcPerc(num1) {return num1 / 100};
 
 // Calculate Factorial
-function calcFactorial(num1) {
-    if(num1 == 0) {return 1}
-    else {let c = num1;
-            for(i = num1; i > 1; i--)
-            {c = c * (i-1);} 
-            return c;}};
+function calcFactorial(num1) {if(num1 == 0) {return 1} else {let c = num1; for(i = num1; i > 1; i--) {c = c * (i-1);} return c;}};
 
 // Calculate Fibonacci Sequence
-function calcFibonacci(num1) {
-    if(num1 < 0) return "OOPS";
-
-    let seqFib = [0, 1];
-    let next = 0;
-
-    for(i = 0; i < num1; i++) {
-        next = seqFib[i] + seqFib[i+1]
-        seqFib.push(next);
-    }
-    
-    return seqFib[num1];
-}
+function calcFibonacci(num1) {if(num1 < 0) return "OOPS"; let seqFib = [0, 1]; let next = 0; for(i = 0; i < num1; i++) {next = seqFib[i] + seqFib[i+1]; seqFib.push(next);} return seqFib[num1]};
 
 // Input holders
-var theNum1;
-var theNum2;
-var theOperator;
+let theNum1;
+let theNum2;
+let theOperator;
 
+let mem1 = "";
+let mem2 = "";
+
+//Operate point to function
 function operate(n1, op, n2) {
     if(op == '+') {return calcAdd(n1,n2)};
     if(op == '-') {return calcSub(n1,n2)};
@@ -56,18 +43,8 @@ function operate2(n1, op) {
     return 'Error';
 }
 
-let mem1 = "";
-let mem2 = "";
-
 // Calculator interface
 const displayNum = document.querySelector('.display');
-
-////Can't get the loop to work...
-// const getNum = [];
-// for(i = 0; i <= 9; i++){
-//     getNum[i] = document.querySelector(`.nr${i}`);
-//     // getNum[i].addEventListener('click', () => {mem1 += `${i}`; displayNum.textContent = mem1;});
-// }
 
 let getNum0 = document.querySelector('.nr0');
 let getNum1 = document.querySelector('.nr1');
@@ -124,8 +101,20 @@ getPerc.addEventListener('click', () => {showOperator('%')});
 getFib.addEventListener('click', () => {showOperator('Fib')});
 
 //Other
-getClear.addEventListener('click', () => {theNum1 = null; theNum2 = null; mem1 = ""; mem2 = ""; theOperator = ""; displayNum.textContent = 0});
-getEquals.addEventListener('click', () => {theNum2 = mem1; mem1 = ""; displayNum.textContent = operate(theNum1, theOperator, theNum2);});
+getClear.addEventListener('click', () => {
+    theNum1 = null; 
+    theNum2 = null; 
+    mem1 = ""; 
+    mem2 = ""; 
+    theOperator = ""; 
+    displayNum.textContent = 0;
+});
+
+getEquals.addEventListener('click', () => {
+    theNum2 = mem1; 
+    mem1 = ""; 
+    displayNum.textContent = operate(theNum1, theOperator, theNum2);
+});
 
 //Pseudo Code
 //Add first numbers to string then to array
@@ -134,3 +123,15 @@ getEquals.addEventListener('click', () => {theNum2 = mem1; mem1 = ""; displayNum
 //Add 0 standby blinking to display
 //Add second mini-display to see progress
 //Add visual input
+
+
+// // Create Interface variables
+// function createVariables() {
+//     var accounts = [];
+  
+//     for (var i = 0; i <= 20; ++i) {
+//         accounts[i] = "whatever";
+//     }
+  
+//     return accounts;
+// }
