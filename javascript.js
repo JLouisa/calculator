@@ -86,22 +86,19 @@ getNum9.addEventListener('click', () => {showDisplay("9")});
 
 //Operators
 getAdd.addEventListener('click', () => {useOperator(); showOperator('+')});
-getSub.addEventListener('click', () => {showOperator('-')});
-getMulti.addEventListener('click', () => {showOperator('*')});
-getDivide.addEventListener('click', () => {showOperator('/')});
-getFact.addEventListener('click', () => {showOperator('!')});
-getPerc.addEventListener('click', () => {showOperator('%')});
-getFib.addEventListener('click', () => {showOperator('Fib')});
+getSub.addEventListener('click', () => {useOperator(); showOperator('-')});
+getMulti.addEventListener('click', () => {useOperator(); showOperator('*')});
+getDivide.addEventListener('click', () => {useOperator(); showOperator('/')});
+getFact.addEventListener('click', () => {useOperator(); showOperator('!')});
+getPerc.addEventListener('click', () => {useOperator(); showOperator('%')});
+getFib.addEventListener('click', () => {useOperator(); showOperator('Fib')});
 
 // Number Display
 function showDisplay(num) {mem1 += num; displayNum.textContent = mem1};
 
-console.log(usedOperator)
-
 //Operator used
 function useOperator() {
     usedOperator = true;
-    console.log(usedOperator);
 }
 
 //Find operator
