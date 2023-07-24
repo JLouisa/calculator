@@ -106,16 +106,22 @@ getNum8.addEventListener('click', () => {showDisplay("8")});
 getNum9.addEventListener('click', () => {showDisplay("9")});
 
 //Operators function
-function showOperator(op) {theNum1 = mem1; mem1 =""; theOperator = op};
+function showOperator(op) {
+    theNum1 = mem1; mem1 =""; theOperator = op;
+    if(op == '+' || op == '-') {displayNum.textContent = theOperator;}
+    if(op == '*') {displayNum.textContent = "x"};
+    if(op == '/') {displayNum.textContent = "÷"};
+    if(op == '!' || op == '%' || op == 'Fib') {displayNum.textContent = operate2(theNum1, theOperator)}
+};
 
 //Operators
-getAdd.addEventListener('click', () => {showOperator('+'); displayNum.textContent = theOperator;});
-getSub.addEventListener('click', () => {showOperator('-'); displayNum.textContent = theOperator;});
-getMulti.addEventListener('click', () => {showOperator('*'); displayNum.textContent = "x";});
-getDivide.addEventListener('click', () => {showOperator('/'); displayNum.textContent = "÷";});
-getFact.addEventListener('click', () => {showOperator('!'); displayNum.textContent = operate2(theNum1, theOperator);});
-getPerc.addEventListener('click', () => {showOperator('%'); displayNum.textContent = operate2(theNum1, theOperator);});
-getFib.addEventListener('click', () => {showOperator('Fib'); displayNum.textContent = operate2(theNum1, theOperator);});
+getAdd.addEventListener('click', () => {showOperator('+')});
+getSub.addEventListener('click', () => {showOperator('-')});
+getMulti.addEventListener('click', () => {showOperator('*')});
+getDivide.addEventListener('click', () => {showOperator('/')});
+getFact.addEventListener('click', () => {showOperator('!')});
+getPerc.addEventListener('click', () => {showOperator('%')});
+getFib.addEventListener('click', () => {showOperator('Fib')});
 
 //Other
 getClear.addEventListener('click', () => {theNum1 = null; theNum2 = null; mem1 = ""; mem2 = ""; theOperator = ""; displayNum.textContent = 0});
