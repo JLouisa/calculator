@@ -79,6 +79,7 @@ let getNum6 = document.querySelector('.nr6');
 let getNum7 = document.querySelector('.nr7');
 let getNum8 = document.querySelector('.nr8');
 let getNum9 = document.querySelector('.nr9');
+
 let getEquals = document.querySelector('.row5col5');
 let getAdd = document.querySelector('.row5col4');
 let getSub = document.querySelector('.row5col3');
@@ -104,27 +105,17 @@ getNum7.addEventListener('click', () => {showDisplay("7")});
 getNum8.addEventListener('click', () => {showDisplay("8")});
 getNum9.addEventListener('click', () => {showDisplay("9")});
 
-
-// //Numbers
-// getNum0.addEventListener('click', () => {mem1 += "0"; displayNum.textContent = mem1;});
-// getNum1.addEventListener('click', () => {mem1 += "1"; displayNum.textContent = mem1;});
-// getNum2.addEventListener('click', () => {mem1 += "2"; displayNum.textContent = mem1;});
-// getNum3.addEventListener('click', () => {mem1 += "3"; displayNum.textContent = mem1;});
-// getNum4.addEventListener('click', () => {mem1 += "4"; displayNum.textContent = mem1;});
-// getNum5.addEventListener('click', () => {mem1 += "5"; displayNum.textContent = mem1;});
-// getNum6.addEventListener('click', () => {mem1 += "6"; displayNum.textContent = mem1;});
-// getNum7.addEventListener('click', () => {mem1 += "7"; displayNum.textContent = mem1;});
-// getNum8.addEventListener('click', () => {mem1 += "8"; displayNum.textContent = mem1;});
-// getNum9.addEventListener('click', () => {mem1 += "9"; displayNum.textContent = mem1;});
+//Operators function
+function showOperator(op) {theNum1 = mem1; mem1 =""; theOperator = op};
 
 //Operators
-getAdd.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '+'; displayNum.textContent = theOperator;});
-getSub.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '-'; displayNum.textContent = theOperator;});
-getMulti.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '*'; displayNum.textContent = "x";});
-getDivide.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '/'; displayNum.textContent = "÷";});
-getFact.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '!'; displayNum.textContent = operate2(theNum1, theOperator);});
-getPerc.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '%'; displayNum.textContent = operate2(theNum1, theOperator);});
-getFib.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = 'Fib'; displayNum.textContent = operate2(theNum1, theOperator);});
+getAdd.addEventListener('click', () => {showOperator('+'); displayNum.textContent = theOperator;});
+getSub.addEventListener('click', () => {showOperator('-'); displayNum.textContent = theOperator;});
+getMulti.addEventListener('click', () => {showOperator('*'); displayNum.textContent = "x";});
+getDivide.addEventListener('click', () => {showOperator('/'); displayNum.textContent = "÷";});
+getFact.addEventListener('click', () => {showOperator('!'); displayNum.textContent = operate2(theNum1, theOperator);});
+getPerc.addEventListener('click', () => {showOperator('%'); displayNum.textContent = operate2(theNum1, theOperator);});
+getFib.addEventListener('click', () => {showOperator('Fib'); displayNum.textContent = operate2(theNum1, theOperator);});
 
 //Other
 getClear.addEventListener('click', () => {theNum1 = null; theNum2 = null; mem1 = ""; mem2 = ""; theOperator = ""; displayNum.textContent = 0});
