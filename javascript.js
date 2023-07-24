@@ -53,7 +53,7 @@ function operate2(n1, op) {
     if(op == '!') {return calcFactorial(n1)};
     if(op == 'Fib') {return calcFibonacci(n1)};
     if(op == '%') {return calcPerc(n1)};
-    return 'Error';
+    return 'Error2';
 }
 
 // Calculator interface
@@ -116,12 +116,15 @@ function findShowOperator(op) {
     else if(usedOperator === true && op ==  '-') {display.textContent = operate(theNum1, theOperator, theNum2)}
     else if(usedOperator === true && op ==  '*') {display.textContent = operate(theNum1, theOperator, theNum2)}
     else if(usedOperator === true && op ==  '/') {display.textContent = operate(theNum1, theOperator, theNum2)}
+    else if(usedOperator === true && op ==  '!') {display.textContent = operate2(result, theOperator)}
+    else if(usedOperator === true && op ==  '%') {display.textContent = operate2(result, theOperator)}
+    else if(usedOperator === true && op ==  'Fib') {display.textContent = operate2(result, theOperator)}
     else {
     if(op == '+') {theOperator = '+'; display.textContent = theOperator}
     if(op == '-') {theOperator = '-'; display.textContent = theOperator}
     if(op == '*') {theOperator = '*'; display.textContent = "x"};
     if(op == '/') {theOperator = '/'; display.textContent = "÷"};
-    if(op == '!' || op == '%' || op == 'Fib') {display.textContent = operate2(theNum1, theOperator)}
+    if(op == '!' || op == '%' || op == 'Fib') {theOperator = op; display.textContent = operate2(theNum1, theOperator)}
 }};
 
 //Operator used
