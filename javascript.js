@@ -105,18 +105,18 @@ function findOperator(op) {
     };
 
 //Find operator
-function showOperator(n) {
-    findOperator(n); 
+function showOperator(n) { 
     if(result !== '') {
         theNum1 = result;
         theNum2 = mem1;
         mem1 = '';}
-
     else { 
         theNum1 = mem1;
         mem2 = mem1;
         mem1 ='';
-    }}; 
+    }
+    findOperator(n);
+}; 
 
 //Clear all variables
 getClear.addEventListener('click', () => {
