@@ -89,17 +89,33 @@ let getPerc = document.querySelector('.row3col1');
 let getFib = document.querySelector('.row2col5');
 let getClear = document.querySelector('.row2col1');
 
+// Number Display
+function showDisplay(num) {mem1 += num; displayNum.textContent = mem1};
+
 //Numbers
-getNum0.addEventListener('click', () => {mem1 += "0"; displayNum.textContent = mem1;});
-getNum1.addEventListener('click', () => {mem1 += "1"; displayNum.textContent = mem1;});
-getNum2.addEventListener('click', () => {mem1 += "2"; displayNum.textContent = mem1;});
-getNum3.addEventListener('click', () => {mem1 += "3"; displayNum.textContent = mem1;});
-getNum4.addEventListener('click', () => {mem1 += "4"; displayNum.textContent = mem1;});
-getNum5.addEventListener('click', () => {mem1 += "5"; displayNum.textContent = mem1;});
-getNum6.addEventListener('click', () => {mem1 += "6"; displayNum.textContent = mem1;});
-getNum7.addEventListener('click', () => {mem1 += "7"; displayNum.textContent = mem1;});
-getNum8.addEventListener('click', () => {mem1 += "8"; displayNum.textContent = mem1;});
-getNum9.addEventListener('click', () => {mem1 += "9"; displayNum.textContent = mem1;});
+getNum0.addEventListener('click', () => {showDisplay("0")});
+getNum1.addEventListener('click', () => {showDisplay("1")});
+getNum2.addEventListener('click', () => {showDisplay("2")});
+getNum3.addEventListener('click', () => {showDisplay("3")});
+getNum4.addEventListener('click', () => {showDisplay("4")});
+getNum5.addEventListener('click', () => {showDisplay("5")});
+getNum6.addEventListener('click', () => {showDisplay("6")});
+getNum7.addEventListener('click', () => {showDisplay("7")});
+getNum8.addEventListener('click', () => {showDisplay("8")});
+getNum9.addEventListener('click', () => {showDisplay("9")});
+
+
+// //Numbers
+// getNum0.addEventListener('click', () => {mem1 += "0"; displayNum.textContent = mem1;});
+// getNum1.addEventListener('click', () => {mem1 += "1"; displayNum.textContent = mem1;});
+// getNum2.addEventListener('click', () => {mem1 += "2"; displayNum.textContent = mem1;});
+// getNum3.addEventListener('click', () => {mem1 += "3"; displayNum.textContent = mem1;});
+// getNum4.addEventListener('click', () => {mem1 += "4"; displayNum.textContent = mem1;});
+// getNum5.addEventListener('click', () => {mem1 += "5"; displayNum.textContent = mem1;});
+// getNum6.addEventListener('click', () => {mem1 += "6"; displayNum.textContent = mem1;});
+// getNum7.addEventListener('click', () => {mem1 += "7"; displayNum.textContent = mem1;});
+// getNum8.addEventListener('click', () => {mem1 += "8"; displayNum.textContent = mem1;});
+// getNum9.addEventListener('click', () => {mem1 += "9"; displayNum.textContent = mem1;});
 
 //Operators
 getAdd.addEventListener('click', () => {theNum1 = mem1; mem1 =""; theOperator = '+'; displayNum.textContent = theOperator;});
