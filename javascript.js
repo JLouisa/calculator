@@ -30,6 +30,7 @@ let mem1 = "";
 let mem2 = "";
 
 let result ='';
+let usedOperator = false;
 
 //Operate point to function
 function operate(n1, op, n2) {
@@ -61,7 +62,6 @@ let getNum7 = document.querySelector('.nr7');
 let getNum8 = document.querySelector('.nr8');
 let getNum9 = document.querySelector('.nr9');
 
-let getEquals = document.querySelector('.row5col5');
 let getAdd = document.querySelector('.row5col4');
 let getSub = document.querySelector('.row5col3');
 let getMulti = document.querySelector('.row5col2');
@@ -70,9 +70,7 @@ let getFact = document.querySelector('.row4col1');
 let getPerc = document.querySelector('.row3col1');
 let getFib = document.querySelector('.row2col5');
 let getClear = document.querySelector('.row2col1');
-
-// Number Display
-function showDisplay(num) {mem1 += num; displayNum.textContent = mem1};
+let getEquals = document.querySelector('.row5col5');
 
 //Numbers
 getNum0.addEventListener('click', () => {showDisplay("0")});
@@ -87,7 +85,7 @@ getNum8.addEventListener('click', () => {showDisplay("8")});
 getNum9.addEventListener('click', () => {showDisplay("9")});
 
 //Operators
-getAdd.addEventListener('click', () => {showOperator('+')});
+getAdd.addEventListener('click', () => {useOperator(); showOperator('+')});
 getSub.addEventListener('click', () => {showOperator('-')});
 getMulti.addEventListener('click', () => {showOperator('*')});
 getDivide.addEventListener('click', () => {showOperator('/')});
@@ -95,14 +93,16 @@ getFact.addEventListener('click', () => {showOperator('!')});
 getPerc.addEventListener('click', () => {showOperator('%')});
 getFib.addEventListener('click', () => {showOperator('Fib')});
 
-//Operators function
-function findOperator(op) {
-    theOperator = op;
-    if(op == '+' || op == '-') {displayNum.textContent = theOperator;}
-    if(op == '*') {displayNum.textContent = "x"};
-    if(op == '/') {displayNum.textContent = "÷"};
-    if(op == '!' || op == '%' || op == 'Fib') {displayNum.textContent = operate2(theNum1, theOperator)}
-    };
+// Number Display
+function showDisplay(num) {mem1 += num; displayNum.textContent = mem1};
+
+console.log(usedOperator)
+
+//Operator used
+function useOperator() {
+    usedOperator = true;
+    console.log(usedOperator);
+}
 
 //Find operator
 function showOperator(n) { 
@@ -118,6 +118,15 @@ function showOperator(n) {
     findOperator(n);
 }; 
 
+//Operators function
+function findOperator(op) {
+    theOperator = op;
+    if(op == '+' || op == '-') {displayNum.textContent = theOperator;}
+    if(op == '*') {displayNum.textContent = "x"};
+    if(op == '/') {displayNum.textContent = "÷"};
+    if(op == '!' || op == '%' || op == 'Fib') {displayNum.textContent = operate2(theNum1, theOperator)}
+    };
+
 //Clear all variables
 getClear.addEventListener('click', () => {
     theNum1 = ''; 
@@ -126,6 +135,7 @@ getClear.addEventListener('click', () => {
     mem2 = ''; 
     theOperator = "";
     result = '';
+    usedOperator = false;
     displayNum.textContent = 0;
 });
 
