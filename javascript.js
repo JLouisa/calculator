@@ -1,5 +1,7 @@
 // Calculate additions
-function calcAdd(num1, num2) {return +num1 + +num2};
+function calcAdd(num1, num2) {
+    result = +num1 + +num2;
+    return result};
 
 // Calculate Subtraction
 function calcSub(num1, num2) {return num1 - num2;};
@@ -26,6 +28,8 @@ let theOperator;
 
 let mem1 = "";
 let mem2 = "";
+
+let result ='';
 
 //Operate point to function
 function operate(n1, op, n2) {
@@ -82,23 +86,6 @@ getNum7.addEventListener('click', () => {showDisplay("7")});
 getNum8.addEventListener('click', () => {showDisplay("8")});
 getNum9.addEventListener('click', () => {showDisplay("9")});
 
-//Operators function
-function findOperator(op) {
-    theOperator = op;
-    if(op == '+' || op == '-') {displayNum.textContent = theOperator;}
-    if(op == '*') {displayNum.textContent = "x"};
-    if(op == '/') {displayNum.textContent = "÷"};
-    if(op == '!' || op == '%' || op == 'Fib') {displayNum.textContent = operate2(theNum1, theOperator)}
-    };
-        //Find operator
-function showOperator(n) {
-    // if(mem2 === '') {mem2 = mem1; showEqual()}
-    // else {
-    theNum1 = mem1; 
-    mem1 ="";
-    findOperator(n)
-    };
-
 //Operators
 getAdd.addEventListener('click', () => {showOperator('+')});
 getSub.addEventListener('click', () => {showOperator('-')});
@@ -108,13 +95,37 @@ getFact.addEventListener('click', () => {showOperator('!')});
 getPerc.addEventListener('click', () => {showOperator('%')});
 getFib.addEventListener('click', () => {showOperator('Fib')});
 
-//Other
+//Operators function
+function findOperator(op) {
+    theOperator = op;
+    if(op == '+' || op == '-') {displayNum.textContent = theOperator;}
+    if(op == '*') {displayNum.textContent = "x"};
+    if(op == '/') {displayNum.textContent = "÷"};
+    if(op == '!' || op == '%' || op == 'Fib') {displayNum.textContent = operate2(theNum1, theOperator)}
+    };
+
+//Find operator
+function showOperator(n) {
+    findOperator(n); 
+    if(result !== '') {
+        theNum1 = result;
+        theNum2 = mem1;
+        mem1 = '';}
+
+    else { 
+        theNum1 = mem1;
+        mem2 = mem1;
+        mem1 ='';
+    }}; 
+
+//Clear all variables
 getClear.addEventListener('click', () => {
     theNum1 = ''; 
     theNum2 = ''; 
     mem1 = ''; 
     mem2 = ''; 
-    theOperator = ""; 
+    theOperator = "";
+    result = '';
     displayNum.textContent = 0;
 });
 
@@ -146,7 +157,9 @@ getEquals.addEventListener('click', () => {showEqual()});
 //     return accounts;
 // }
 
-let test1 = '';
-let test2 = '';
+// let test1 = '1';
+// let test2 = '';
 
-console.log(test1 === test2)
+// console.log(test1 === test2)
+
+   
