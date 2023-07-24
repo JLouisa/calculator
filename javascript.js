@@ -112,14 +112,15 @@ function showDisplay(num) {
 
 //Operators function
 function findShowOperator(op) {
-    if(usedOperator === true && op == '+' )      {display.textContent = operate(theNum1, theOperator, theNum2); console.log(theOperator)}
-    else if(usedOperator === true && op ==  '-') {display.textContent = operate(theNum1, theOperator, theNum2); console.log(theOperator)}
-    else if(usedOperator === true && op ==  '*') {display.textContent = operate(theNum1, theOperator, theNum2); console.log(theOperator)}
-    else if(usedOperator === true && op ==  '/') {display.textContent = operate(theNum1, theOperator, theNum2); console.log(theOperator)}
+    if(usedOperator === true && op == '+' ) {display.textContent = operate(theNum1, theOperator, theNum2)}
+    else if(usedOperator === true && op ==  '-') {display.textContent = operate(theNum1, theOperator, theNum2)}
+    else if(usedOperator === true && op ==  '*') {display.textContent = operate(theNum1, theOperator, theNum2)}
+    else if(usedOperator === true && op ==  '/') {display.textContent = operate(theNum1, theOperator, theNum2)}
     else {
-    if(op == '+' || op == '-') {display.textContent = theOperator;}
-    if(op == '*') {display.textContent = "x"};
-    if(op == '/') {display.textContent = "÷"};
+    if(op == '+') {theOperator = '+'; display.textContent = theOperator}
+    if(op == '-') {theOperator = '-'; display.textContent = theOperator}
+    if(op == '*') {theOperator = '*'; display.textContent = "x"};
+    if(op == '/') {theOperator = '/'; display.textContent = "÷"};
     if(op == '!' || op == '%' || op == 'Fib') {display.textContent = operate2(theNum1, theOperator)}
 }};
 
@@ -137,6 +138,7 @@ function useEqual() {
 function operator(n) {
     if(usedOperator === true && result != '') {
         theNum1 = result;
+        theNum2 = displayNum;
         displayNum = '';
         findShowOperator(n);
         }
