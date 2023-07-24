@@ -97,11 +97,11 @@ getAdd.addEventListener('click', () => {operator('+'); theOperator = '+';});
 getSub.addEventListener('click', () => {operator('-'); theOperator = '-';});
 getMulti.addEventListener('click', () => {operator('*'); theOperator = '*';});
 getDivide.addEventListener('click', () => {operator('/'); theOperator = '/';});
-getFact.addEventListener('click', () => {operator('!'); theOperator = '!';});
-getPerc.addEventListener('click', () => {operator('%'); theOperator = '%';});
-getFib.addEventListener('click', () => {operator('Fib'); theOperator = 'Fib';});
-getEquals.addEventListener('click', () => {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory()});
-getClear.addEventListener('click', () => {clearMemory(); display.textContent = 0; result = ''});
+getFact.addEventListener('click', () => {theOperator = '!'; operator('!')});
+getPerc.addEventListener('click', () => {theOperator = '%'; operator('%')});
+getFib.addEventListener('click', () => {theOperator = 'Fib'; operator('Fib')});
+getEquals.addEventListener('click', () => {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual()});
+getClear.addEventListener('click', () => {clearMemory(); display.textContent = 0; result = ''; usedEqual = false});
 
 //------------------------------------------------------------------
 
@@ -119,6 +119,9 @@ function findShowOperator(op) {
     else if(usedOperator === true && op ==  '!') {display.textContent = operate2(result, theOperator)}
     else if(usedOperator === true && op ==  '%') {display.textContent = operate2(result, theOperator)}
     else if(usedOperator === true && op ==  'Fib') {display.textContent = operate2(result, theOperator)}
+    else if(usedEqual == true && theOperator == '!') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
+    else if(usedEqual == true && theOperator == 'Fib') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
+    else if(usedEqual == true && theOperator == '%') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
     else {
     if(op == '+') {theOperator = '+'; display.textContent = theOperator}
     if(op == '-') {theOperator = '-'; display.textContent = theOperator}
@@ -139,7 +142,12 @@ function useEqual() {
 
 //Find operator
 function operator(n) {
-    if(usedOperator === true && result != '') {
+   if(usedEqual == true && (theOperator == '!' || theOperator == '%' || theOperator == 'Fib')) {
+    theNum1 = result;
+    displayNum = '';
+    findShowOperator(n);
+}
+    else if(usedOperator === true && result != '') {
         theNum1 = result;
         theNum2 = displayNum;
         displayNum = '';
