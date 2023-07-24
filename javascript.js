@@ -35,6 +35,9 @@ let mem2 = "";
 
 let result ='';
 let displayNum = '';
+let miniDisplay;
+
+let usedEqual = false;
 let usedOperator = false;
 
 //Operate point to function
@@ -97,8 +100,8 @@ getDivide.addEventListener('click', () => {operator('/')});
 getFact.addEventListener('click', () => {operator('!')});
 getPerc.addEventListener('click', () => {operator('%')});
 getFib.addEventListener('click', () => {operator('Fib')});
-getEquals.addEventListener('click', () => {showEqual()});
-getClear.addEventListener('click', () => {theNum1 = ''; theNum2 = ''; mem1 = ''; mem2 = ''; theOperator = ""; result = ''; displayNum = ''; usedOperator = false; display.textContent = 0;});
+getEquals.addEventListener('click', () => {theNum2 = displayNum; showEqual(); clearMemory()});
+getClear.addEventListener('click', () => {clearMemory(); display.textContent = 0; result = ''});
 
 //------------------------------------------------------------------
 
@@ -109,36 +112,38 @@ function showDisplay(num) {
 
 //Operators function
 function findShowOperator(op) {
-    theOperator = op;
+    if(usedOperator === true) {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2);}
+    else {theOperator = op;
     if(op == '+' || op == '-') {display.textContent = theOperator;}
     if(op == '*') {display.textContent = "x"};
     if(op == '/') {display.textContent = "÷"};
-    if(op == '!' || op == '%' || op == 'Fib') 
-    {display.textContent = operate2(theNum1, theOperator)}
-    if(usedOperator === true) {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2);}
-};
+    if(op == '!' || op == '%' || op == 'Fib') {display.textContent = operate2(theNum1, theOperator)}
+}};
 
 //Operator used
 function useOperator() {
     usedOperator = true;
 }
 
+//Equal used
+function useEqual() {
+    usedEqual = true;
+}
+
 //Find operator
 function operator(n) {
     if(usedOperator === true && result != '') {
-        mem1 = result;
-        theNum1 = mem1;
+        theNum1 = result;
         displayNum = '';
         findShowOperator(n);
         }
+
     else if(usedOperator === true) {
-            mem2 = displayNum;
-            theNum2 = mem2;
+            theNum2 = displayNum;
             findShowOperator(n);
     }
     else {
-            mem1 = displayNum;
-            theNum1 = mem1;
+            theNum1 = displayNum;
             displayNum = '';
             findShowOperator(n);
             useOperator();
@@ -147,8 +152,6 @@ function operator(n) {
 
 // Equals calculation
 function showEqual() {
-    mem2 = displayNum;
-    theNum2 = mem2;
     displayNum = '';
     display.textContent = operate(theNum1, theOperator, theNum2);
 }
@@ -157,3 +160,21 @@ function showEqual() {
 function calcSeq() {
     if(usedOperator === true) {showEqual()}
 }
+
+
+function clearMemory() {
+    theNum1 = '';
+    theNum2 = '';
+    mem1 = '';
+    mem2 = '';
+    theOperator = "";
+    displayNum = '';
+    usedOperator = false;
+}
+
+//1 Choose first number  = mem1
+//2 Choose operator  = theOperator
+//3 choose second number  = mem2
+
+
+// 3 + 3 x => 9
