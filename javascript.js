@@ -46,7 +46,7 @@ function operate(n1, op, n2) {
     if(op == '-') {return calcSub(n1,n2)};
     if(op == '*') {return calcMulti(n1,n2)};
     if(op == '/') {return calcDivide(n1,n2)};
-    return 'Error';
+    return 'Error1';
 }
 
 function operate2(n1, op) {
@@ -113,22 +113,26 @@ function showDisplay(num) {
 //Operators function
 function findShowOperator(op) {
     if(usedOperator === true && op == '+' ) {display.textContent = operate(theNum1, theOperator, theNum2)}
-    else if(usedOperator === true && op ==  '-') {display.textContent = operate(theNum1, theOperator, theNum2)}
-    else if(usedOperator === true && op ==  '*') {display.textContent = operate(theNum1, theOperator, theNum2)}
-    else if(usedOperator === true && op ==  '/') {display.textContent = operate(theNum1, theOperator, theNum2)}
-    else if(usedOperator === true && op ==  '!') {display.textContent = operate2(result, theOperator)}
-    else if(usedOperator === true && op ==  '%') {display.textContent = operate2(result, theOperator)}
-    else if(usedOperator === true && op ==  'Fib') {display.textContent = operate2(result, theOperator)}
-    else if(usedEqual == true && theOperator == '!') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
-    else if(usedEqual == true && theOperator == 'Fib') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
-    else if(usedEqual == true && theOperator == '%') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
-    else {
+    if(usedOperator === true && op ==  '-') {display.textContent = operate(theNum1, theOperator, theNum2)}
+    if(usedOperator === true && op ==  '*') {display.textContent = operate(theNum1, theOperator, theNum2)}
+    if(usedOperator === true && op ==  '/') {display.textContent = operate(theNum1, theOperator, theNum2)}
+    if(usedOperator === true && op ==  '!') {display.textContent = operate2(result, theOperator); clearMemory()}
+    if(usedOperator === true && op ==  '%') {display.textContent = operate2(result, theOperator); clearMemory()}
+    if(usedOperator === true && op ==  'Fib') {display.textContent = operate2(result, theOperator); clearMemory()}
+}
+
+function findShowOperator2(op) {
+    if(usedEqual == true && theOperator == '!') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
+    if(usedEqual == true && theOperator == 'Fib') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
+    if(usedEqual == true && theOperator == '%') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
+}
+function findShowOperator3(op) {
     if(op == '+') {theOperator = '+'; display.textContent = theOperator}
     if(op == '-') {theOperator = '-'; display.textContent = theOperator}
     if(op == '*') {theOperator = '*'; display.textContent = "x"};
     if(op == '/') {theOperator = '/'; display.textContent = "÷"};
-    if(op == '!' || op == '%' || op == 'Fib') {theOperator = op; display.textContent = operate2(theNum1, theOperator)}
-}};
+    if(op == '!' || op == '%' || op == 'Fib') {theOperator = op; display.textContent = operate2(theNum1, theOperator); clearMemory()}
+};
 
 //Operator used
 function useOperator() {
@@ -142,27 +146,28 @@ function useEqual() {
 
 //Find operator
 function operator(n) {
-   if(usedEqual == true && (theOperator == '!' || theOperator == '%' || theOperator == 'Fib')) {
-    theNum1 = result;
-    displayNum = '';
-    findShowOperator(n);
+    if(usedEqual == true && (theOperator == '!' || theOperator == '%' || theOperator == 'Fib')) {
+            theNum1 = result;
+            displayNum = '';
+            findShowOperator2(n);
 }
     else if(usedOperator === true && result != '') {
-        theNum1 = result;
-        theNum2 = displayNum;
-        displayNum = '';
-        findShowOperator(n);
-        }
+            theNum1 = result;
+            theNum2 = displayNum;
+            displayNum = '';
+            theOperator = n;
+            findShowOperator(n);
+}
 
     else if(usedOperator === true) {
             theNum2 = displayNum;
             displayNum = '';
-            findShowOperator(n);
+            findShowOperator2(n);
     }
     else {
             theNum1 = displayNum;
             displayNum = '';
-            findShowOperator(n);
+            findShowOperator3(n);
             useOperator();
 }
 }; 
@@ -186,7 +191,7 @@ function clearMemory() {
     mem2 = '';
     theOperator = "";
     displayNum = '';
-    usedOperator = false;
+    usedOperator = false; console.log("Here3");
 }
 
 
