@@ -54,7 +54,7 @@ function operate2(n1, op) {
 }
 
 // Calculator interface
-const display = document.querySelector('.display');
+const display = document.querySelector('.mainDisplay');
 
 let getNum0 = document.querySelector('.nr0');
 let getNum1 = document.querySelector('.nr1');
@@ -127,13 +127,15 @@ function findShowOperator(op) {
     if(op == '+' || op == '-') {display.textContent = theOperator;}
     if(op == '*') {display.textContent = "x"};
     if(op == '/') {display.textContent = "÷"};
-    if(op == '!' || op == '%' || op == 'Fib') {display.textContent = operate2(theNum1, theOperator)}
-    };
+    if(op == '!' || op == '%' || op == 'Fib') 
+    {display.textContent = operate2(theNum1, theOperator)}
+};
 
 // Equals calculation
 function showEqual() {
-    theNum2 = mem1;
-    mem1 = ''; 
+    mem2 = displayNum;
+    displayNum = '';
+    theNum2 = mem2;
     display.textContent = operate(theNum1, theOperator, theNum2);
 }
 

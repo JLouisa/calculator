@@ -41,6 +41,17 @@ h1 {
     background-color: white;
 }
 
+.mainDisplay {
+    margin-bottom: -30px
+}
+
+.miniDisplay {
+    color: rgba(128, 128, 128, 0.493);
+    margin-top: 40px;
+    margin-bottom: -40px;
+    font-size: 20px;
+}
+
 .calcBody {
     display: flex;
 }
