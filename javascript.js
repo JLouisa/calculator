@@ -89,13 +89,13 @@ getNum8.addEventListener('click', () => {showDisplay("8")});
 getNum9.addEventListener('click', () => {showDisplay("9")});
 
 //Operators
-getAdd.addEventListener('click', () => {Operator('+')});
-getSub.addEventListener('click', () => {Operator('-')});
-getMulti.addEventListener('click', () => {Operator('*')});
-getDivide.addEventListener('click', () => {Operator('/')});
-getFact.addEventListener('click', () => {Operator('!')});
-getPerc.addEventListener('click', () => {Operator('%')});
-getFib.addEventListener('click', () => {Operator('Fib')});
+getAdd.addEventListener('click', () => {operator('+')});
+getSub.addEventListener('click', () => {operator('-')});
+getMulti.addEventListener('click', () => {operator('*')});
+getDivide.addEventListener('click', () => {operator('/')});
+getFact.addEventListener('click', () => {operator('!')});
+getPerc.addEventListener('click', () => {operator('%')});
+getFib.addEventListener('click', () => {operator('Fib')});
 getEquals.addEventListener('click', () => {showEqual()});
 getClear.addEventListener('click', () => {theNum1 = ''; theNum2 = ''; mem1 = ''; mem2 = ''; theOperator = ""; result = ''; usedOperator = false; displayNum.textContent = 0;});
 
@@ -110,16 +110,16 @@ function useOperator() {
 }
 
 //Find operator
-function Operator(n) { 
+function operator(n) { 
     theNum1 = mem1;
     mem2 = mem1;
     mem1 ='';
-    findOperator(n);
+    findShowOperator(n);
     useOperator();
 }; 
 
 //Operators function
-function findOperator(op) {
+function findShowOperator(op) {
     theOperator = op;
     if(op == '+' || op == '-') {displayNum.textContent = theOperator;}
     if(op == '*') {displayNum.textContent = "x"};
