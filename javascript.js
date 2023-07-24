@@ -26,8 +26,8 @@ function calcFactorial(num1) {if(num1 == 0) {result = 1; return result} else {le
 function calcFibonacci(num1) {if(num1 < 0) {result = "OOPS"; return result}; let seqFib = [0, 1]; let next = 0; for(i = 0; i < num1; i++) {next = seqFib[i] + seqFib[i+1]; seqFib.push(next);} result = seqFib[num1]; return result};
 
 // Input holders
-let theNum1;
-let theNum2;
+let theNum1 = '';
+let theNum2 = '';
 let theOperator;
 
 let mem1 = "";
@@ -100,7 +100,7 @@ getDivide.addEventListener('click', () => {operator('/'); theOperator = '/';});
 getFact.addEventListener('click', () => {theOperator = '!'; operator('!')});
 getPerc.addEventListener('click', () => {theOperator = '%'; operator('%')});
 getFib.addEventListener('click', () => {theOperator = 'Fib'; operator('Fib')});
-getEquals.addEventListener('click', () => {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual()});
+getEquals.addEventListener('click', () => {if(theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual()}});
 getClear.addEventListener('click', () => {clearMemory(); display.textContent = 0; result = ''; usedEqual = false});
 
 //------------------------------------------------------------------
@@ -188,3 +188,7 @@ function clearMemory() {
     displayNum = '';
     usedOperator = false;
 }
+
+
+// {if(theNum1 == "" && theNum2 == "") {display.textContent = "0"} 
+// else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual()}});
