@@ -83,13 +83,21 @@ getNum8.addEventListener('click', () => {showDisplay("8")});
 getNum9.addEventListener('click', () => {showDisplay("9")});
 
 //Operators function
-function showOperator(op) {
-    theNum1 = mem1; mem1 =""; theOperator = op;
+function findOperator(op) {
+    theOperator = op;
     if(op == '+' || op == '-') {displayNum.textContent = theOperator;}
     if(op == '*') {displayNum.textContent = "x"};
     if(op == '/') {displayNum.textContent = "÷"};
     if(op == '!' || op == '%' || op == 'Fib') {displayNum.textContent = operate2(theNum1, theOperator)}
-};
+    };
+        //Find operator
+function showOperator(n) {
+    // if(mem2 === '') {mem2 = mem1; showEqual()}
+    // else {
+    theNum1 = mem1; 
+    mem1 ="";
+    findOperator(n)
+    };
 
 //Operators
 getAdd.addEventListener('click', () => {showOperator('+')});
@@ -102,19 +110,21 @@ getFib.addEventListener('click', () => {showOperator('Fib')});
 
 //Other
 getClear.addEventListener('click', () => {
-    theNum1 = null; 
-    theNum2 = null; 
-    mem1 = ""; 
-    mem2 = ""; 
+    theNum1 = ''; 
+    theNum2 = ''; 
+    mem1 = ''; 
+    mem2 = ''; 
     theOperator = ""; 
     displayNum.textContent = 0;
 });
 
-getEquals.addEventListener('click', () => {
-    theNum2 = mem1; 
-    mem1 = ""; 
+function showEqual() {
+    theNum2 = mem1;
+    mem1 = ''; 
     displayNum.textContent = operate(theNum1, theOperator, theNum2);
-});
+}
+
+getEquals.addEventListener('click', () => {showEqual()});
 
 //Pseudo Code
 //Add first numbers to string then to array
@@ -135,3 +145,8 @@ getEquals.addEventListener('click', () => {
   
 //     return accounts;
 // }
+
+let test1 = '';
+let test2 = '';
+
+console.log(test1 === test2)
