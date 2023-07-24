@@ -1,25 +1,23 @@
 // Calculate additions
-function calcAdd(num1, num2) {
-    result = +num1 + +num2;
-    return result};
+function calcAdd(num1, num2) {result = +num1 + +num2; return result};
 
 // Calculate Subtraction
-function calcSub(num1, num2) {return num1 - num2;};
+function calcSub(num1, num2) {result = num1 - num2; return result};
 
 // Calculate Multiplication
-function calcMulti(num1, num2) {return num1 * num2};
+function calcMulti(num1, num2) {result = num1 * num2; return result};
 
 // Calculate Division
-function calcDivide(num1, num2) {if(num2 == 0) {return "lol, try again..."} else {return num1 / num2}};
+function calcDivide(num1, num2) {if(num2 == 0) {return "lol, try again..."} else {result = num1 / num2; return result}};
 
 // Calculate Percentage
-function calcPerc(num1) {return num1 / 100};
+function calcPerc(num1) {result = num1 / 100; return result};
 
 // Calculate Factorial
-function calcFactorial(num1) {if(num1 == 0) {return 1} else {let c = num1; for(i = num1; i > 1; i--) {c = c * (i-1);} return c;}};
+function calcFactorial(num1) {if(num1 == 0) {result = 1; return result} else {let c = num1; for(i = num1; i > 1; i--) {c = c * (i-1);} result = c; return result}};
 
 // Calculate Fibonacci Sequence
-function calcFibonacci(num1) {if(num1 < 0) return "OOPS"; let seqFib = [0, 1]; let next = 0; for(i = 0; i < num1; i++) {next = seqFib[i] + seqFib[i+1]; seqFib.push(next);} return seqFib[num1]};
+function calcFibonacci(num1) {if(num1 < 0) {result = "OOPS"; return result}; let seqFib = [0, 1]; let next = 0; for(i = 0; i < num1; i++) {next = seqFib[i] + seqFib[i+1]; seqFib.push(next);} result = seqFib[num1]; return result};
 
 // Input holders
 let theNum1;
@@ -137,4 +135,5 @@ getEquals.addEventListener('click', () => {showEqual()});
 //Add 0 standby blinking to display
 //Add second mini-display to see progress
 //Add visual input
+//Add punctuation in result
    
