@@ -129,13 +129,10 @@ function findShowOperator2(op) {
 
 //Equals
 function calcEqual() {
-    route = 1; console.log(`route 6, theNum1 = ${theNum1}, theNum2 = ${theNum2}`);
-    if(theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} 
-    else {if(result != '') {theNum1 = result}; 
-        theNum2 = displayNum; 
-        showEqual(); 
-        clearMemory();
-    }
+    route = 1;
+    if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} 
+    else {if(displayNum !== '' && theNum1 == '' && theNum2 == '') {result = displayNum; displayNum = ''; display.textContent = result}
+    else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory()}};
 };
 
 // Equals part calculation
@@ -253,8 +250,4 @@ function removeTransition(e) {
 //Add ability to only use ${number} ${=} equals ${number}
 //Add 0 standby blinking to display
 //Add second mini-display to see progress
-//Add visual input
 //Add punctuation in result
-// Result after equal
-// Result after second operator
-// Should be able to reset after Result wih new calculation
