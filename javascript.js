@@ -29,7 +29,7 @@ let mem2 = "";
 
 let result ='';
 let displayNum = '';
-let miniDisplay;
+let miniDisplayNum = '';
 
 let route = 0;
 let disableButton = 0;
@@ -53,6 +53,7 @@ function operate2(n1, op) {
 
 // Calculator interface
 const display = document.querySelector('.mainDisplay');
+const miniDisplay = document.querySelector('.miniDisplay');
 
 let getNum0 = document.querySelector('.nr0');
 let getNum1 = document.querySelector('.nr1');
@@ -99,7 +100,7 @@ getFact.addEventListener('click', () => {addTransition(getFact); calcRoutes2(); 
 getPerc.addEventListener('click', () => {addTransition(getPerc); calcRoutes2(); theOperator = '%'; operator('%');});
 getFib.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib');});
 
-getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory(); display.textContent = 0});
+getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
 getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual()});
 
 //Operator functions
@@ -112,6 +113,7 @@ function funcDot() {addTransition(getNumDot); disableDotButton(1); resetRoutes()
 // Number Display
 function showDisplay(num) {
     displayNum += num; display.textContent = displayNum;
+    miniDisplayNum += displayNum; miniDisplay.textContent = miniDisplayNum;
 };
 
 //Operators function
@@ -178,6 +180,7 @@ function clearMemory() {
     
     theOperator = "";
     displayNum = '';
+    miniDisplayNum = '';
     disableButtons(0);
 }
 
@@ -190,9 +193,12 @@ function completeClearMemory() {
     
     theOperator = '';
     displayNum = '';
-    
+    miniDisplayNum = '';
+
+    display.textContent = 0;
+    miniDisplay.textContent = 0;
+
     result ='';
-    miniDisplay;
     route = 0;
     disableButtons(0);
 }
@@ -247,7 +253,6 @@ function removeTransition(e) {
   window.addEventListener('clicked', addTransition)
 
 //Pseudo Code
-//Add ability to only use ${number} ${=} equals ${number}
 //Add 0 standby blinking to display
 //Add second mini-display to see progress
 //Add punctuation in result
