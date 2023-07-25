@@ -1,9 +1,3 @@
-//Pseudo Code
-//Add 0 standby blinking to display
-//Add second mini-display to see progress
-//Add visual input
-//Add punctuation in result
-
 // Calculate additions
 function calcAdd(num1, num2) {result = +num1 + +num2; return result};
 
@@ -36,10 +30,6 @@ let mem2 = "";
 let result ='';
 let displayNum = '';
 let miniDisplay;
-
-let usedEqual = false;
-let usedOperator = false;
-let usedResult = false;
 
 let route = 0;
 
@@ -106,9 +96,7 @@ getPerc.addEventListener('click', () => {calcRoutes2(); theOperator = '%'; opera
 getFib.addEventListener('click', () => {calcRoutes2(); theOperator = 'Fib'; operator('Fib');});
 
 getClear.addEventListener('click', () => {completeClearMemory(); display.textContent = 0});
-getEquals.addEventListener('click', () => {route = 1; console.log('route 1'); if(theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual(); useResult(); usedOperator = false;}});
-
-//------------------------------------------------------------------
+getEquals.addEventListener('click', () => {route = 1; if(theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual(); useResult(); usedOperator = false;}});
 
 // Number Display
 function showDisplay(num) {
@@ -149,26 +137,20 @@ function calcSeq() {
 }
 
 // Equals calculation
-function showEqual() {
-    displayNum = '';
-    display.textContent = operate(theNum1, theOperator, theNum2);
-}
+function showEqual() {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2);}
 
 //Find operator <----------------------------------------
 function operator(n) {
     if(route == 9) {
-        console.log("route 9");
         theNum1 = result;
         theNum2 = displayNum; showEqual();
     }
 
     if(route == 6) {
-        console.log("route 6");
         theNum2 = displayNum; showEqual();
     }
 
     if(route == 4) {
-        console.log("route 1");
         theNum1 = result;
         displayNum = '';
         findShowOperator(n);
@@ -176,14 +158,12 @@ function operator(n) {
     }
 
     if(route == 3){
-        console.log("route 3");
         theNum1 = displayNum;
         displayNum = '';
         findShowOperator(n);
     }
 
     if(route == 2) {
-        console.log("route 2");
         displayNum = '';
         findShowOperator2(n);
         route = 4;
@@ -208,9 +188,6 @@ function completeClearMemory() {
     result ='';
     displayNum = '';
     miniDisplay;
-    usedEqual = false;
-    usedOperator = false;
-    usedResult = false;
     route = 0;
 }
 
@@ -224,13 +201,18 @@ function calcRoutes() {
 function calcRoutes2() {
     route = 2;
     theNum1 = displayNum;
-    if(result !=='') {theNum1 = result; console.log('test2')}
+    if(result !=='') {theNum1 = result;}
 }
         
 function resetRoutes() {
     if(route == 1) {route = 0; result =''; theNum2 = ''};
 }
 
+//Pseudo Code
+//Add 0 standby blinking to display
+//Add second mini-display to see progress
+//Add visual input
+//Add punctuation in result
 // Result after equal
 // Result after second operator
 // Should be able to reset after Result wih new calculation
