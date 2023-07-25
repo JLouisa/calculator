@@ -77,16 +77,16 @@ let getClear = document.querySelector('.row2col1');
 let getEquals = document.querySelector('.row5col5');
 
 //Numbers
-getNum0.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("0")});
-getNum1.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("1")});
-getNum2.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("2")});
-getNum3.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("3")});
-getNum4.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("4")});
-getNum5.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("5")});
-getNum6.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("6")});
-getNum7.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("7")});
-getNum8.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("8")});
-getNum9.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("9")});
+getNum0.addEventListener('click', () => {resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("0")});
+getNum1.addEventListener('click', () => {resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("1")});
+getNum2.addEventListener('click', () => {resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("2")});
+getNum3.addEventListener('click', () => {resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("3")});
+getNum4.addEventListener('click', () => {resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("4")});
+getNum5.addEventListener('click', () => {resetRoutes(); disableDotButton(0); disableDotButton(0);  disableButtons(0); showDisplay("5")});
+getNum6.addEventListener('click', () => {resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("6")});
+getNum7.addEventListener('click', () => {resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("7")});
+getNum8.addEventListener('click', () => {resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("8")});
+getNum9.addEventListener('click', () => {resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("9")});
 getNumDot.addEventListener('click', funcDot);
 
 //Operators
@@ -107,7 +107,7 @@ function funcAdd() {disableButtons(); calcRoutes(); operator('+'); theOperator =
 function funcSub() {disableButtons(); calcRoutes(); operator('-'); theOperator = '-'; disableButtons(2)};
 function funcMulti() {disableButtons(); calcRoutes(); operator('*'); theOperator = '*'; disableButtons(3)};
 function funcDivide() {disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4)};
-function funcDot() {disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(".")};
+function funcDot() {disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(".");disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4)};
 
 // Number Display
 function showDisplay(num) {
@@ -232,7 +232,7 @@ function disableButtons(n) {
 
 //Disable operator button after 1 press.
 function disableDotButton(n) {
-    if(n == 1) {getNumDot.removeEventListener("click", funcAdd)}
+    if(n == 1) {getNumDot.removeEventListener("click", funcDot)}
     if(n == 0) {getNumDot.addEventListener('click', funcDot)};
 }
 
