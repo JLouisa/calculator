@@ -22,7 +22,7 @@ function calcFibonacci(num1) {if(num1 < 0) {result = "OOPS"; return result}; let
 // Input holders
 let theNum1 = '';
 let theNum2 = '';
-let theOperator;
+let theOperator = '';
 
 let mem1 = "";
 let mem2 = "";
@@ -96,7 +96,7 @@ getPerc.addEventListener('click', () => {calcRoutes2(); theOperator = '%'; opera
 getFib.addEventListener('click', () => {calcRoutes2(); theOperator = 'Fib'; operator('Fib');});
 
 getClear.addEventListener('click', () => {completeClearMemory(); display.textContent = 0});
-getEquals.addEventListener('click', () => {route = 1; if(theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual(); useResult(); usedOperator = false;}});
+getEquals.addEventListener('click', () => {calcEqual()});
 
 // Number Display
 function showDisplay(num) {
@@ -116,54 +116,50 @@ function findShowOperator2(op) {
        theOperator = op; display.textContent = operate2(theNum1, theOperator);}
 }
 
-//Operator used
-function useOperator() {
-    usedOperator = true;
-}
-
-//Equal used
-function useEqual() {
-    usedEqual = true;
-}
-
-// Result active
-function useResult() {
-    usedResult = true;
-}
-
 //Sequence
 function calcSeq() {
     if(usedOperator === true) {showEqual()}
 }
 
-// Equals calculation
+//Equals
+function calcEqual() {
+    route = 1; console.log(`route 6, theNum1 = ${theNum1}, theNum2 = ${theNum2}`);
+    if(theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} 
+    else {if(result != '') {theNum1 = result}; 
+        theNum2 = displayNum; 
+        showEqual(); 
+        clearMemory();
+    }
+};
+
+// Equals part calculation
 function showEqual() {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2);}
 
 //Find operator <----------------------------------------
 function operator(n) {
-    if(route == 9) {
+    if(route == 9) { console.log(`route 9, theNum1 = ${theNum1}, theNum2 = ${theNum2}`);
         theNum1 = result;
         theNum2 = displayNum; showEqual();
     }
 
-    if(route == 6) {
-        theNum2 = displayNum; showEqual();
+    if(route == 6) { console.log(`route 6, theNum1 = ${theNum1}, theNum2 = ${theNum2}`);
+        theNum2 = displayNum; showEqual(); //<---- no theNum1
     }
 
-    if(route == 4) {
+    if(route == 4) { console.log(`route 4, theNum1 = ${theNum1}, theNum2 = ${theNum2}`);
         theNum1 = result;
         displayNum = '';
         findShowOperator(n);
-        route = 3;
+        route = 6;
     }
 
-    if(route == 3){
+    if(route == 3){ console.log(`route 3, theNum1 = ${theNum1}, theNum2 = ${theNum2}`);
         theNum1 = displayNum;
-        displayNum = '';
+        displayNum = '';  //<----
         findShowOperator(n);
     }
 
-    if(route == 2) {
+    if(route == 2) { console.log(`route 2, theNum1 = ${theNum1}, theNum2 = ${theNum2}`);
         displayNum = '';
         findShowOperator2(n);
         route = 4;
@@ -182,12 +178,15 @@ function clearMemory() {
 function completeClearMemory() {
     theNum1 = '';
     theNum2 = '';
-    theOperator;
+    theOperator = '';
+    
     mem1 = "";
     mem2 = "";
+    
     result ='';
     displayNum = '';
     miniDisplay;
+    
     route = 0;
 }
 
