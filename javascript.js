@@ -33,6 +33,7 @@ let miniDisplay;
 
 let route = 0;
 let disableButton = 0;
+let disableDot = 0;
 
 //Operate point to function
 function operate(n1, op, n2) {
@@ -86,7 +87,7 @@ getNum6.addEventListener('click', () => {resetRoutes(); disableButtons(0); showD
 getNum7.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("7")});
 getNum8.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("8")});
 getNum9.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("9")});
-getNumDot.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay(".")});
+getNumDot.addEventListener('click', funcDot);
 
 //Operators
 getAdd.addEventListener('click', funcAdd);
@@ -106,6 +107,7 @@ function funcAdd() {disableButtons(); calcRoutes(); operator('+'); theOperator =
 function funcSub() {disableButtons(); calcRoutes(); operator('-'); theOperator = '-'; disableButtons(2)};
 function funcMulti() {disableButtons(); calcRoutes(); operator('*'); theOperator = '*'; disableButtons(3)};
 function funcDivide() {disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4)};
+function funcDot() {disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(".")};
 
 // Number Display
 function showDisplay(num) {
@@ -228,7 +230,15 @@ function disableButtons(n) {
                 getDivide.addEventListener('click', funcDivide);}
 };
 
+//Disable operator button after 1 press.
+function disableDotButton(n) {
+    if(n == 1) {getNumDot.removeEventListener("click", funcAdd)}
+    if(n == 0) {getNumDot.addEventListener('click', funcDot)};
+}
+
+
 //Pseudo Code
+//Add ability to only use ${number} ${=} equals ${number}
 //Add 0 standby blinking to display
 //Add second mini-display to see progress
 //Add visual input
