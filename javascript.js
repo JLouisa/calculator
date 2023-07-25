@@ -130,31 +130,31 @@ function calcEqual() {
 // Equals part calculation
 function showEqual() {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2);}
 
-//Find operator <----------------------------------------
+//Find operator
 function operator(n) {
-    if(route == 9) { console.log(`route 9, theNum1 = ${theNum1}, theNum2 = ${theNum2}, displayNum = ${displayNum}`);
+    if(route == 9) {
         theNum1 = result;
         theNum2 = displayNum; showEqual();
     }
 
-    if(route == 6) { console.log(`route 6, theNum1 = ${theNum1}, theNum2 = ${theNum2}, displayNum = ${displayNum}`);
-        theNum2 = displayNum; showEqual(); //<---- no theNum1
+    if(route == 6) {
+        theNum2 = displayNum; showEqual();
     }
 
-    if(route == 4) { console.log(`route 4, theNum1 = ${theNum1}, theNum2 = ${theNum2}, displayNum = ${displayNum}`);
+    if(route == 4) {
         theNum1 = result;
         displayNum = '';
         findShowOperator(n);
         route = 6;
     }
 
-    if(route == 3){ console.log(`route 3, theNum1 = ${theNum1}, theNum2 = ${theNum2}, displayNum = ${displayNum}`);
+    if(route == 3){
         theNum1 = displayNum;
-        displayNum = '';  //<----
+        displayNum = '';
         findShowOperator(n);
     }
 
-    if(route == 2) { console.log(`route 2, theNum1 = ${theNum1}, theNum2 = ${theNum2}, displayNum = ${displayNum}`);
+    if(route == 2) {
         displayNum = '';
         findShowOperator2(n);
         route = 4;
