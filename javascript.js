@@ -97,7 +97,7 @@ getPerc.addEventListener('click', () => {addTransition(getPerc); calcRoutes2(); 
 getFib.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')});
 
 getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
-getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual(); showMiniDisplay(' | ')});
+getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual()});
 
 // //Get keyboard Input
 // getNum0.addEventListener('click', () => {addTransition(getNum0); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("0"); showMiniDisplay(0)});
@@ -152,24 +152,28 @@ function findShowOperator(op) {
     if(op == '-') {theOperator = '-'; display.textContent = theOperator};
     if(op == '*') {theOperator = '*'; display.textContent = "x"};
     if(op == '/') {theOperator = '/'; display.textContent = ":"};
+    mem1 = op;
 };
 
 function findShowOperator2(op) {
     if(op == '!' || op == '%' || op == 'Fib') {
        theOperator = op; display.textContent = operate2(theNum1, theOperator)};
+       mem1 = op;
 }
 
 //Equals
 function calcEqual() {
-    route = 1;
+    if(route === 1) {theNum1 = result; theOperator = mem1; theNum2 = mem2; console.log(`Again, theNum1 =  ${theNum1}, Operator = ${theOperator} theNum2 = ${theNum2}`); display.textContent = operate(theNum1, theOperator, theNum2)}
+    else {route = 1;
     if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} 
     else {if(displayNum !== '' && theNum1 == '' && theNum2 == '') {result = displayNum; displayNum = ''; display.textContent = result}
     else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory()}};
     usedEqual = true;
+    showMiniDisplay(' | ');}
 };
 
 // Equals part calculation
-function showEqual() {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2);}
+function showEqual() {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2); console.log(`Route 1, theNum1 =  ${theNum1}, Operator = ${theOperator} theNum2 = ${theNum2}`)}
 
 //Find operator
 function operator(n) {
@@ -191,6 +195,7 @@ function operator(n) {
 
     if(route == 3){
         theNum1 = displayNum;
+        mem2 = displayNum;
         displayNum = '';
         findShowOperator(n);
     }
@@ -206,8 +211,8 @@ function clearMemory() {
     theNum1 = '';
     theNum2 = '';
     
-    mem1 = '';
-    mem2 = '';
+    // mem1 = '';
+    // mem2 = '';
     
     theOperator = "";
     displayNum = '';
@@ -286,8 +291,3 @@ function removeTransition(e) {
 //Pseudo Code
 //Add 0 standby blinking to display
 //Add punctuation in result
-
-test1 ='1234567890'
-console.log(test1.length)
-
-24
