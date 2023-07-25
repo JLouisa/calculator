@@ -78,6 +78,7 @@ h1 {
 
 .clicked {
     transform: scale(0.9);
+    background-color: rgba(0, 139, 42, 0.356);
 }
 
 .row2col5 {
