@@ -32,6 +32,7 @@ let displayNum = '';
 let miniDisplay;
 
 let route = 0;
+let disableButton = 0;
 
 //Operate point to function
 function operate(n1, op, n2) {
@@ -74,22 +75,22 @@ let getClear = document.querySelector('.row2col1');
 let getEquals = document.querySelector('.row5col5');
 
 //Numbers
-getNum0.addEventListener('click', () => {resetRoutes(); showDisplay("0")});
-getNum1.addEventListener('click', () => {resetRoutes(); showDisplay("1")});
-getNum2.addEventListener('click', () => {resetRoutes(); showDisplay("2")});
-getNum3.addEventListener('click', () => {resetRoutes(); showDisplay("3")});
-getNum4.addEventListener('click', () => {resetRoutes(); showDisplay("4")});
-getNum5.addEventListener('click', () => {resetRoutes(); showDisplay("5")});
-getNum6.addEventListener('click', () => {resetRoutes(); showDisplay("6")});
-getNum7.addEventListener('click', () => {resetRoutes(); showDisplay("7")});
-getNum8.addEventListener('click', () => {resetRoutes(); showDisplay("8")});
-getNum9.addEventListener('click', () => {resetRoutes(); showDisplay("9")});
+getNum0.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("0")});
+getNum1.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("1")});
+getNum2.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("2")});
+getNum3.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("3")});
+getNum4.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("4")});
+getNum5.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("5")});
+getNum6.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("6")});
+getNum7.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("7")});
+getNum8.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("8")});
+getNum9.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("9")});
 
 //Operators
-getAdd.addEventListener('click', () => {calcRoutes(); operator('+'); theOperator = '+';});
-getSub.addEventListener('click', () => {calcRoutes(); operator('-'); theOperator = '-';});
-getMulti.addEventListener('click', () => {calcRoutes(); operator('*'); theOperator = '*';});
-getDivide.addEventListener('click', () => {calcRoutes(); operator('/'); theOperator = '/';});
+getAdd.addEventListener('click', () => {disableButtons(); calcRoutes(); operator('+'); theOperator = '+'; disableButtons(1)});
+getSub.addEventListener('click', () => {disableButtons(); calcRoutes(); operator('-'); theOperator = '-'; disableButtons(2)});
+getMulti.addEventListener('click', () => {disableButtons(); calcRoutes(); operator('*'); theOperator = '*'; disableButtons(3)});
+getDivide.addEventListener('click', () => {disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4)});
 
 getFact.addEventListener('click', () => {calcRoutes2(); theOperator = '!'; operator('!')});
 getPerc.addEventListener('click', () => {calcRoutes2(); theOperator = '%'; operator('%');});
@@ -164,25 +165,29 @@ function operator(n) {
 function clearMemory() {
     theNum1 = '';
     theNum2 = '';
+    
     mem1 = '';
     mem2 = '';
+    
     theOperator = "";
     displayNum = '';
+    disableButtons(0);
 }
 
 function completeClearMemory() {
     theNum1 = '';
     theNum2 = '';
-    theOperator = '';
     
     mem1 = "";
     mem2 = "";
     
-    result ='';
+    theOperator = '';
     displayNum = '';
-    miniDisplay;
     
+    result ='';
+    miniDisplay;
     route = 0;
+    disableButtons(0);
 }
 
 function calcRoutes() {
@@ -202,6 +207,17 @@ function calcRoutes2() {
 function resetRoutes() {
     if(route == 1) {route = 0; result =''; theNum2 = ''};
 }
+
+function disableButtons(n) {
+    if(n == 1) {getAdd.setAttribute('style', 'background-color: purple;')};
+    if(n == 2) {getSub.setAttribute('style', 'background-color: purple;')};
+    if(n == 3) {getMulti.setAttribute('style', 'background-color: purple;')};
+    if(n == 4) {getDivide.setAttribute('style', 'background-color: purple;');};
+    if(n == 0) {getAdd.setAttribute('style', 'background-color: white;')}
+    if(n == 0) {getSub.setAttribute('style', 'background-color: white;')}
+    if(n == 0) {getMulti.setAttribute('style', 'background-color: white;')}
+    if(n == 0) {getDivide.setAttribute('style', 'background-color: white;')}
+};
 
 //Pseudo Code
 //Add 0 standby blinking to display
