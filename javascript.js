@@ -100,12 +100,12 @@ getAdd.addEventListener('click', () => {calcRoutes(); operator('+'); theOperator
 getSub.addEventListener('click', () => {calcRoutes(); operator('-'); theOperator = '-';});
 getMulti.addEventListener('click', () => {calcRoutes(); operator('*'); theOperator = '*';});
 getDivide.addEventListener('click', () => {calcRoutes(); operator('/'); theOperator = '/';});
-getFact.addEventListener('click', () => {calcRoutes(); theOperator = '!'; operator('!');});
-getPerc.addEventListener('click', () => {calcRoutes(); theOperator = '%'; operator('%');});
-getFib.addEventListener('click', () => {calcRoutes(); theOperator = 'Fib'; operator('Fib');});
+getFact.addEventListener('click', () => {calcRoutes(); operator('!'); theOperator = '!'});
+getPerc.addEventListener('click', () => {calcRoutes(); operator('%'); theOperator = '%';});
+getFib.addEventListener('click', () => {calcRoutes(); operator('Fib'); theOperator = 'Fib';});
 
 getClear.addEventListener('click', () => {completeClearMemory(); display.textContent = 0});
-getEquals.addEventListener('click', () => {route = 1; if(theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual(); useResult(); usedOperator = false;}});
+getEquals.addEventListener('click', () => {route = 1; console.log('route 1'); if(theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual(); useResult(); usedOperator = false;}});
 
 //------------------------------------------------------------------
 
@@ -116,21 +116,12 @@ function showDisplay(num) {
 
 //Operators function
 function findShowOperator(op) {
-    if(op == '+' ) {display.textContent = operate(theNum1, theOperator, theNum2)}
-    if(op ==  '-') {display.textContent = operate(theNum1, theOperator, theNum2)}
-    if(op ==  '*') {display.textContent = operate(theNum1, theOperator, theNum2)}
-    if(op ==  '/') {display.textContent = operate(theNum1, theOperator, theNum2)}
-    if(op ==  '!') {display.textContent = operate2(result, theOperator)}
-    if(op ==  '%') {display.textContent = operate2(result, theOperator)}
-    if(op ==  'Fib') {display.textContent = operate2(result, theOperator)}
-}
-
-function findShowOperator2(op) {
     if(op == '+') {theOperator = '+'; display.textContent = theOperator}
     if(op == '-') {theOperator = '-'; display.textContent = theOperator}
     if(op == '*') {theOperator = '*'; display.textContent = "x"};
     if(op == '/') {theOperator = '/'; display.textContent = "÷"};
-    if(op == '!' || op == '%' || op == 'Fib') {theOperator = op; display.textContent = operate2(theNum1, theOperator); clearMemory()}
+    if(op == '!' || op == '%' || op == 'Fib') {
+        theOperator = op; display.textContent = operate2(theNum1, theOperator); clearMemory();}
 };
 
 //Operator used
@@ -161,11 +152,17 @@ function showEqual() {
 
 //Find operator <----------------------------------------
 function operator(n) {
+    if(route == 9) {
+        console.log("route 9");
+        theNum1 = result;
+        theNum2 = displayNum; showEqual();
+    }
+   
     if(route == 3){
         console.log("route 3");
         theNum1 = displayNum;
         displayNum = '';
-        findShowOperator2(n);
+        findShowOperator(n);
     }
 
     if(route == 6) {
@@ -173,17 +170,11 @@ function operator(n) {
         theNum2 = displayNum; showEqual();
     }
 
-    if(route == 9) {
-        console.log("route 9");
-        theNum1 = result;
-        theNum2 = displayNum; showEqual();
-    }
-
     if(route == 4) {
         console.log("route 1");
         theNum1 = result;
         displayNum = '';
-        findShowOperator2(n);
+        findShowOperator(n);
         route = 3;
     }
 }
