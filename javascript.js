@@ -163,8 +163,8 @@ function findShowOperator2(op) {
 
 //Equals
 function calcEqual() {
-    if(route === 1) {theNum1 = result; theOperator = mem1; theNum2 = mem2; console.log(`Again, theNum1 =  ${theNum1}, Operator = ${theOperator} theNum2 = ${theNum2}`); display.textContent = operate(theNum1, theOperator, theNum2)}
-    else {route = 1;
+    if(route === 1) {theNum1 = result; theOperator = mem1; theNum2 = mem2; display.textContent = operate(theNum1, theOperator, theNum2); miniDisplayNum = `${result} | `; miniDisplay.textContent = miniDisplayNum}
+    else{ route = 1;
     if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} 
     else {if(displayNum !== '' && theNum1 == '' && theNum2 == '') {result = displayNum; displayNum = ''; display.textContent = result}
     else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory()}};
