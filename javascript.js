@@ -63,6 +63,7 @@ let getNum6 = document.querySelector('.nr6');
 let getNum7 = document.querySelector('.nr7');
 let getNum8 = document.querySelector('.nr8');
 let getNum9 = document.querySelector('.nr9');
+let getNumDot = document.querySelector('.nr10');
 
 let getAdd = document.querySelector('.row5col4');
 let getSub = document.querySelector('.row5col3');
@@ -85,6 +86,7 @@ getNum6.addEventListener('click', () => {resetRoutes(); disableButtons(0); showD
 getNum7.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("7")});
 getNum8.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("8")});
 getNum9.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("9")});
+getNumDot.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay(".")});
 
 //Operators
 getAdd.addEventListener('click', funcAdd);
@@ -214,8 +216,7 @@ function resetRoutes() {
     if(route == 1) {route = 0; result =''; theNum2 = ''};
 }
 
-//.removeEventListener("click", func)
-
+//Disable operator button after 1 press.
 function disableButtons(n) {
     if(n == 1) {getAdd.removeEventListener("click", funcAdd)};
     if(n == 2) {getSub.removeEventListener("click", funcSub)};
