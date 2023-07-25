@@ -77,18 +77,25 @@ let getFib = document.querySelector('.row2col5');
 let getClear = document.querySelector('.row2col1');
 let getEquals = document.querySelector('.row5col5');
 
-//Numbers
-getNum0.addEventListener('click', () => {addTransition(getNum0); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("0")});
-getNum1.addEventListener('click', () => {addTransition(getNum1); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("1")});
-getNum2.addEventListener('click', () => {addTransition(getNum2); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("2")});
-getNum3.addEventListener('click', () => {addTransition(getNum3); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("3")});
-getNum4.addEventListener('click', () => {addTransition(getNum4); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("4")});
-getNum5.addEventListener('click', () => {addTransition(getNum5); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("5")});
-getNum6.addEventListener('click', () => {addTransition(getNum6); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("6")});
-getNum7.addEventListener('click', () => {addTransition(getNum7); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("7")});
-getNum8.addEventListener('click', () => {addTransition(getNum8); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("8")});
-getNum9.addEventListener('click', () => {addTransition(getNum9); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("9")});
+//Get Input
+getNum0.addEventListener('click', () => {addTransition(getNum0); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("0"); showMiniDisplay(0)});
+getNum1.addEventListener('click', () => {addTransition(getNum1); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("1"); showMiniDisplay(1)});
+getNum2.addEventListener('click', () => {addTransition(getNum2); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("2"); showMiniDisplay(2)});
+getNum3.addEventListener('click', () => {addTransition(getNum3); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("3"); showMiniDisplay(3)});
+getNum4.addEventListener('click', () => {addTransition(getNum4); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("4"); showMiniDisplay(4)});
+getNum5.addEventListener('click', () => {addTransition(getNum5); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("5"); showMiniDisplay(5)});
+getNum6.addEventListener('click', () => {addTransition(getNum6); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("6"); showMiniDisplay(6)});
+getNum7.addEventListener('click', () => {addTransition(getNum7); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("7"); showMiniDisplay(7)});
+getNum8.addEventListener('click', () => {addTransition(getNum8); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("8"); showMiniDisplay(8)});
+getNum9.addEventListener('click', () => {addTransition(getNum9); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("9"); showMiniDisplay(9)});
 getNumDot.addEventListener('click', funcDot);
+
+getFact.addEventListener('click', () => {addTransition(getFact); calcRoutes2(); theOperator = '!'; operator('!'); showMiniDisplay(' ! ')});
+getPerc.addEventListener('click', () => {addTransition(getPerc); calcRoutes2(); theOperator = '%'; operator('%'); showMiniDisplay(' % ')});
+getFib.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')});
+
+getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
+getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual()});
 
 //Operators
 getAdd.addEventListener('click', funcAdd);
@@ -96,37 +103,34 @@ getSub.addEventListener('click', funcSub);
 getMulti.addEventListener('click', funcMulti);
 getDivide.addEventListener('click', funcDivide);
 
-getFact.addEventListener('click', () => {addTransition(getFact); calcRoutes2(); theOperator = '!'; operator('!')});
-getPerc.addEventListener('click', () => {addTransition(getPerc); calcRoutes2(); theOperator = '%'; operator('%');});
-getFib.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib');});
-
-getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
-getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual()});
-
 //Operator functions
-function funcAdd() {addTransition(getAdd); disableButtons(); calcRoutes(); operator('+'); theOperator = '+'; disableButtons(1)};
-function funcSub() {addTransition(getSub); disableButtons(); calcRoutes(); operator('-'); theOperator = '-'; disableButtons(2)};
-function funcMulti() {addTransition(getMulti); disableButtons(); calcRoutes(); operator('*'); theOperator = '*'; disableButtons(3)};
-function funcDivide() {addTransition(getDivide); disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4)};
-function funcDot() {addTransition(getNumDot); disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(".");disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4)};
+function funcAdd() {addTransition(getAdd); disableButtons(); calcRoutes(); operator('+'); theOperator = '+'; disableButtons(1); showMiniDisplay(' + ')};
+function funcSub() {addTransition(getSub); disableButtons(); calcRoutes(); operator('-'); theOperator = '-'; disableButtons(2); showMiniDisplay(' - ')};
+function funcMulti() {addTransition(getMulti); disableButtons(); calcRoutes(); operator('*'); theOperator = '*'; disableButtons(3); showMiniDisplay(' x ')};
+function funcDivide() {addTransition(getDivide); disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4); showMiniDisplay(' ÷ ')};
+function funcDot() {addTransition(getNumDot); disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(".");disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay('.')};
 
 // Number Display
 function showDisplay(num) {
     displayNum += num; display.textContent = displayNum;
-    miniDisplayNum += displayNum; miniDisplay.textContent = miniDisplayNum;
+};
+
+// Mini Display
+function showMiniDisplay(d) {
+    miniDisplayNum += `${d}`; miniDisplay.textContent = miniDisplayNum;
 };
 
 //Operators function
 function findShowOperator(op) {
-    if(op == '+') {theOperator = '+'; display.textContent = theOperator}
-    if(op == '-') {theOperator = '-'; display.textContent = theOperator}
+    if(op == '+') {theOperator = '+'; display.textContent = theOperator};
+    if(op == '-') {theOperator = '-'; display.textContent = theOperator};
     if(op == '*') {theOperator = '*'; display.textContent = "x"};
     if(op == '/') {theOperator = '/'; display.textContent = "÷"};
 };
 
 function findShowOperator2(op) {
     if(op == '!' || op == '%' || op == 'Fib') {
-       theOperator = op; display.textContent = operate2(theNum1, theOperator);}
+       theOperator = op; display.textContent = operate2(theNum1, theOperator)};
 }
 
 //Equals
