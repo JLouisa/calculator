@@ -87,10 +87,10 @@ getNum8.addEventListener('click', () => {resetRoutes(); disableButtons(0); showD
 getNum9.addEventListener('click', () => {resetRoutes(); disableButtons(0); showDisplay("9")});
 
 //Operators
-getAdd.addEventListener('click', () => {disableButtons(); calcRoutes(); operator('+'); theOperator = '+'; disableButtons(1)});
-getSub.addEventListener('click', () => {disableButtons(); calcRoutes(); operator('-'); theOperator = '-'; disableButtons(2)});
-getMulti.addEventListener('click', () => {disableButtons(); calcRoutes(); operator('*'); theOperator = '*'; disableButtons(3)});
-getDivide.addEventListener('click', () => {disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4)});
+getAdd.addEventListener('click', funcAdd);
+getSub.addEventListener('click', funcSub);
+getMulti.addEventListener('click', funcMulti);
+getDivide.addEventListener('click', funcDivide);
 
 getFact.addEventListener('click', () => {calcRoutes2(); theOperator = '!'; operator('!')});
 getPerc.addEventListener('click', () => {calcRoutes2(); theOperator = '%'; operator('%');});
@@ -98,6 +98,12 @@ getFib.addEventListener('click', () => {calcRoutes2(); theOperator = 'Fib'; oper
 
 getClear.addEventListener('click', () => {completeClearMemory(); display.textContent = 0});
 getEquals.addEventListener('click', () => {calcEqual()});
+
+//Operator functions
+function funcAdd() {disableButtons(); calcRoutes(); operator('+'); theOperator = '+'; disableButtons(1)};
+function funcSub() {disableButtons(); calcRoutes(); operator('-'); theOperator = '-'; disableButtons(2)};
+function funcMulti() {disableButtons(); calcRoutes(); operator('*'); theOperator = '*'; disableButtons(3)};
+function funcDivide() {disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4)};
 
 // Number Display
 function showDisplay(num) {
@@ -208,15 +214,17 @@ function resetRoutes() {
     if(route == 1) {route = 0; result =''; theNum2 = ''};
 }
 
+//.removeEventListener("click", func)
+
 function disableButtons(n) {
-    if(n == 1) {getAdd.setAttribute('style', 'background-color: purple;')};
-    if(n == 2) {getSub.setAttribute('style', 'background-color: purple;')};
-    if(n == 3) {getMulti.setAttribute('style', 'background-color: purple;')};
-    if(n == 4) {getDivide.setAttribute('style', 'background-color: purple;');};
-    if(n == 0) {getAdd.setAttribute('style', 'background-color: white;')}
-    if(n == 0) {getSub.setAttribute('style', 'background-color: white;')}
-    if(n == 0) {getMulti.setAttribute('style', 'background-color: white;')}
-    if(n == 0) {getDivide.setAttribute('style', 'background-color: white;')}
+    if(n == 1) {getAdd.removeEventListener("click", funcAdd)};
+    if(n == 2) {getSub.removeEventListener("click", funcSub)};
+    if(n == 3) {getMulti.removeEventListener("click", funcMulti)};
+    if(n == 4) {getDivide.removeEventListener("click", funcDivide)};
+    if(n == 0) {getAdd.addEventListener('click', funcAdd);
+                getSub.addEventListener('click', funcSub);
+                getMulti.addEventListener('click', funcMulti);
+                getDivide.addEventListener('click', funcDivide);}
 };
 
 //Pseudo Code
