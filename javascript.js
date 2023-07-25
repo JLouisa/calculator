@@ -97,7 +97,7 @@ getPerc.addEventListener('click', () => {addTransition(getPerc); calcRoutes2(); 
 getFib.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')});
 
 getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
-getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual()});
+getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual(); showMiniDisplay(' | ')});
 
 // //Get keyboard Input
 // getNum0.addEventListener('click', () => {addTransition(getNum0); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("0"); showMiniDisplay(0)});
@@ -140,8 +140,10 @@ function showDisplay(num) {
 
 // Mini Display
 function showMiniDisplay(d) {
-    if(miniDisplayNum.length > 35) {return} 
+    if(miniDisplayNum.length > 35) {return};
+    if(usedEqual === true) {miniDisplayNum = `${result}${d}`; miniDisplay.textContent = miniDisplayNum}
     else{miniDisplayNum += `${d}`; miniDisplay.textContent = miniDisplayNum};
+    usedEqual = false;
 };
 
 //Operators function
@@ -163,6 +165,7 @@ function calcEqual() {
     if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} 
     else {if(displayNum !== '' && theNum1 == '' && theNum2 == '') {result = displayNum; displayNum = ''; display.textContent = result}
     else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory()}};
+    usedEqual = true;
 };
 
 // Equals part calculation
@@ -282,7 +285,6 @@ function removeTransition(e) {
 
 //Pseudo Code
 //Add 0 standby blinking to display
-//Add second mini-display to see progress
 //Add punctuation in result
 
 test1 ='1234567890'
