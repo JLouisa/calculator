@@ -35,6 +35,8 @@ let route = 0;
 let disableButton = 0;
 let disableDot = 0;
 
+let usedEqual = false;
+
 //Operate point to function
 function operate(n1, op, n2) {
     if(op == '+') {return calcAdd(n1,n2)};
@@ -127,17 +129,19 @@ getDivide.addEventListener('click', funcDivide);
 function funcAdd() {addTransition(getAdd); disableButtons(); calcRoutes(); operator('+'); theOperator = '+'; disableButtons(1); showMiniDisplay(' + ')};
 function funcSub() {addTransition(getSub); disableButtons(); calcRoutes(); operator('-'); theOperator = '-'; disableButtons(2); showMiniDisplay(' - ')};
 function funcMulti() {addTransition(getMulti); disableButtons(); calcRoutes(); operator('*'); theOperator = '*'; disableButtons(3); showMiniDisplay(' x ')};
-function funcDivide() {addTransition(getDivide); disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4); showMiniDisplay(' ÷ ')};
+function funcDivide() {addTransition(getDivide); disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4); showMiniDisplay(' : ')};
 function funcDot() {addTransition(getNumDot); disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(".");disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay('.')};
 
 // Number Display
 function showDisplay(num) {
-    displayNum += num; display.textContent = displayNum;
+    if(displayNum.length > 20) {return} 
+    else {displayNum += num; display.textContent = displayNum;}
 };
 
 // Mini Display
 function showMiniDisplay(d) {
-    miniDisplayNum += `${d}`; miniDisplay.textContent = miniDisplayNum;
+    if(miniDisplayNum.length > 35) {return} 
+    else{miniDisplayNum += `${d}`; miniDisplay.textContent = miniDisplayNum};
 };
 
 //Operators function
@@ -145,7 +149,7 @@ function findShowOperator(op) {
     if(op == '+') {theOperator = '+'; display.textContent = theOperator};
     if(op == '-') {theOperator = '-'; display.textContent = theOperator};
     if(op == '*') {theOperator = '*'; display.textContent = "x"};
-    if(op == '/') {theOperator = '/'; display.textContent = "÷"};
+    if(op == '/') {theOperator = '/'; display.textContent = ":"};
 };
 
 function findShowOperator2(op) {
@@ -280,3 +284,8 @@ function removeTransition(e) {
 //Add 0 standby blinking to display
 //Add second mini-display to see progress
 //Add punctuation in result
+
+test1 ='1234567890'
+console.log(test1.length)
+
+24
