@@ -39,6 +39,9 @@ let miniDisplay;
 
 let usedEqual = false;
 let usedOperator = false;
+let usedResult = false;
+
+let route = 0;
 
 //Operate point to function
 function operate(n1, op, n2) {
@@ -81,27 +84,28 @@ let getClear = document.querySelector('.row2col1');
 let getEquals = document.querySelector('.row5col5');
 
 //Numbers
-getNum0.addEventListener('click', () => {showDisplay("0")});
-getNum1.addEventListener('click', () => {showDisplay("1")});
-getNum2.addEventListener('click', () => {showDisplay("2")});
-getNum3.addEventListener('click', () => {showDisplay("3")});
-getNum4.addEventListener('click', () => {showDisplay("4")});
-getNum5.addEventListener('click', () => {showDisplay("5")});
-getNum6.addEventListener('click', () => {showDisplay("6")});
-getNum7.addEventListener('click', () => {showDisplay("7")});
-getNum8.addEventListener('click', () => {showDisplay("8")});
-getNum9.addEventListener('click', () => {showDisplay("9")});
+getNum0.addEventListener('click', () => {resetRoutes(); showDisplay("0")});
+getNum1.addEventListener('click', () => {resetRoutes(); showDisplay("1")});
+getNum2.addEventListener('click', () => {resetRoutes(); showDisplay("2")});
+getNum3.addEventListener('click', () => {resetRoutes(); showDisplay("3")});
+getNum4.addEventListener('click', () => {resetRoutes(); showDisplay("4")});
+getNum5.addEventListener('click', () => {resetRoutes(); showDisplay("5")});
+getNum6.addEventListener('click', () => {resetRoutes(); showDisplay("6")});
+getNum7.addEventListener('click', () => {resetRoutes(); showDisplay("7")});
+getNum8.addEventListener('click', () => {resetRoutes(); showDisplay("8")});
+getNum9.addEventListener('click', () => {resetRoutes(); showDisplay("9")});
 
 //Operators
-getAdd.addEventListener('click', () => {operator('+'); theOperator = '+';});
-getSub.addEventListener('click', () => {operator('-'); theOperator = '-';});
-getMulti.addEventListener('click', () => {operator('*'); theOperator = '*';});
-getDivide.addEventListener('click', () => {operator('/'); theOperator = '/';});
-getFact.addEventListener('click', () => {theOperator = '!'; operator('!')});
-getPerc.addEventListener('click', () => {theOperator = '%'; operator('%')});
-getFib.addEventListener('click', () => {theOperator = 'Fib'; operator('Fib')});
-getEquals.addEventListener('click', () => {if(theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual()}});
-getClear.addEventListener('click', () => {clearMemory(); display.textContent = 0; result = ''; usedEqual = false});
+getAdd.addEventListener('click', () => {calcRoutes(); operator('+'); theOperator = '+';});
+getSub.addEventListener('click', () => {calcRoutes(); operator('-'); theOperator = '-';});
+getMulti.addEventListener('click', () => {calcRoutes(); operator('*'); theOperator = '*';});
+getDivide.addEventListener('click', () => {calcRoutes(); operator('/'); theOperator = '/';});
+getFact.addEventListener('click', () => {calcRoutes(); theOperator = '!'; operator('!');});
+getPerc.addEventListener('click', () => {calcRoutes(); theOperator = '%'; operator('%');});
+getFib.addEventListener('click', () => {calcRoutes(); theOperator = 'Fib'; operator('Fib');});
+
+getClear.addEventListener('click', () => {completeClearMemory(); display.textContent = 0});
+getEquals.addEventListener('click', () => {route = 1; if(theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual(); useResult(); usedOperator = false;}});
 
 //------------------------------------------------------------------
 
@@ -112,21 +116,16 @@ function showDisplay(num) {
 
 //Operators function
 function findShowOperator(op) {
-    if(usedOperator === true && op == '+' ) {display.textContent = operate(theNum1, theOperator, theNum2)}
-    if(usedOperator === true && op ==  '-') {display.textContent = operate(theNum1, theOperator, theNum2)}
-    if(usedOperator === true && op ==  '*') {display.textContent = operate(theNum1, theOperator, theNum2);console.log('here1');}
-    if(usedOperator === true && op ==  '/') {display.textContent = operate(theNum1, theOperator, theNum2)}
-    if(usedOperator === true && op ==  '!') {display.textContent = operate2(result, theOperator); clearMemory()}
-    if(usedOperator === true && op ==  '%') {display.textContent = operate2(result, theOperator); clearMemory()}
-    if(usedOperator === true && op ==  'Fib') {display.textContent = operate2(result, theOperator); clearMemory()}
+    if(op == '+' ) {display.textContent = operate(theNum1, theOperator, theNum2)}
+    if(op ==  '-') {display.textContent = operate(theNum1, theOperator, theNum2)}
+    if(op ==  '*') {display.textContent = operate(theNum1, theOperator, theNum2)}
+    if(op ==  '/') {display.textContent = operate(theNum1, theOperator, theNum2)}
+    if(op ==  '!') {display.textContent = operate2(result, theOperator)}
+    if(op ==  '%') {display.textContent = operate2(result, theOperator)}
+    if(op ==  'Fib') {display.textContent = operate2(result, theOperator)}
 }
 
 function findShowOperator2(op) {
-    if(usedEqual == true && theOperator == '!') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
-    if(usedEqual == true && theOperator == 'Fib') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
-    if(usedEqual == true && theOperator == '%') {theOperator = op; display.textContent = operate2(result, theOperator); clearMemory()}
-}
-function findShowOperator3(op) {
     if(op == '+') {theOperator = '+'; display.textContent = theOperator}
     if(op == '-') {theOperator = '-'; display.textContent = theOperator}
     if(op == '*') {theOperator = '*'; display.textContent = "x"};
@@ -144,41 +143,9 @@ function useEqual() {
     usedEqual = true;
 }
 
-//Find operator
-function operator(n) {
-    if(usedEqual == true && (theOperator == '!' || theOperator == '%' || theOperator == 'Fib')) {
-            theNum1 = result;
-            displayNum = '';
-            findShowOperator2(n);
-            console.log('O1');
-}
-    else if(usedOperator === true && result != '') {
-            theNum1 = result;
-            theNum2 = displayNum;
-            displayNum = '';
-            theOperator = n; console.log('O2');
-            findShowOperator3(n);
-}
-
-    else if(usedOperator === true) {
-            theNum2 = displayNum;
-            displayNum = '';
-            findShowOperator2(n);
-            console.log('O3');
-    }
-    else {
-            theNum1 = displayNum;
-            displayNum = '';
-            findShowOperator3(n);
-            useOperator();
-            console.log('O4');
-}
-}; 
-
-// Equals calculation
-function showEqual() {
-    displayNum = '';
-    display.textContent = operate(theNum1, theOperator, theNum2);
+// Result active
+function useResult() {
+    usedResult = true;
 }
 
 //Sequence
@@ -186,6 +153,40 @@ function calcSeq() {
     if(usedOperator === true) {showEqual()}
 }
 
+// Equals calculation
+function showEqual() {
+    displayNum = '';
+    display.textContent = operate(theNum1, theOperator, theNum2);
+}
+
+//Find operator <----------------------------------------
+function operator(n) {
+    if(route == 3){
+        console.log("route 3");
+        theNum1 = displayNum;
+        displayNum = '';
+        findShowOperator2(n);
+    }
+
+    if(route == 6) {
+        console.log("route 6");
+        theNum2 = displayNum; showEqual();
+    }
+
+    if(route == 9) {
+        console.log("route 9");
+        theNum1 = result;
+        theNum2 = displayNum; showEqual();
+    }
+
+    if(route == 4) {
+        console.log("route 1");
+        theNum1 = result;
+        displayNum = '';
+        findShowOperator2(n);
+        route = 3;
+    }
+}
 
 function clearMemory() {
     theNum1 = '';
@@ -194,9 +195,35 @@ function clearMemory() {
     mem2 = '';
     theOperator = "";
     displayNum = '';
-    usedOperator = false;
 }
 
+function completeClearMemory() {
+    theNum1 = '';
+    theNum2 = '';
+    theOperator;
+    mem1 = "";
+    mem2 = "";
+    result ='';
+    displayNum = '';
+    miniDisplay;
+    usedEqual = false;
+    usedOperator = false;
+    usedResult = false;
+    route = 0;
+}
 
-// {if(theNum1 == "" && theNum2 == "") {display.textContent = "0"} 
-// else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory(); useEqual()}});
+function calcRoutes() {
+    if(route == 6) {route = 9};
+    if(route == 3 || route == 6) {route = 6};
+    if(route == 0) {route = 3};
+    if(route == 1) {route = 4};
+    
+}
+
+function resetRoutes() {
+    if(route == 1) {route = 0; result =''; theNum2 = ''};
+}
+
+// Result after equal
+// Result after second operator
+// Should be able to reset after Result wih new calculation
