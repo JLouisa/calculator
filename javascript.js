@@ -174,18 +174,26 @@ function findShowOperator2(op) {
 
 //Equals
 function calcEquals() {
-    if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {console.log('Here1'); disableButtons(6)}
-    else if(route === 1) {addTransition(getEquals); console.log('Here'); theNum1 = result; theOperator = mem1; theNum2 = mem2; display.textContent = operate(theNum1, theOperator, theNum2); miniDisplayNum = `${result} | `; miniDisplay.textContent = miniDisplayNum}
-    else {route = 1; {
-        if(displayNum !== '' && theNum1 == '' && theNum2 == '') {addTransition(getEquals); console.log('Here2'); result = displayNum; displayNum = ''; display.textContent = result}
-        else {if(result != '') {addTransition(getEquals); theNum1 = result}
-            else {addTransition(getEquals); theNum2 = displayNum; showEqual(); clearMemory()}}};
+    if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {console.log('disable equal'); disableButtons(6)}
+    else if(route === 1) {
+        addTransition(getEquals); console.log('Already route 1'); 
+        theNum1 = result; theOperator = mem1; theNum2 = mem2; 
+        display.textContent = operate(theNum1, theOperator, theNum2);
+        miniDisplayNum = `${result} | `; 
+        miniDisplay.textContent = miniDisplayNum}
+    else {route = 1; if(displayNum !== '' && theNum1 == '' && theNum2 == '') {console.log('Route 1');
+                    addTransition(getEquals);  
+                    result = displayNum; displayNum = ''; 
+                    display.textContent = result}
+                    else {if(result != '') {addTransition(getEquals); theNum1 = result; theNum2 = displayNum; showEqual(); clearMemory(); console.log('here1')}
+                    else {addTransition(getEquals); theNum2 = displayNum; showEqual(); clearMemory()}};
+    
     usedEqual = true;
     showMiniDisplay(' | ');}
 };
 
 // Equals part calculation
-function showEqual() {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2); console.log(`Route 1, theNum1 =  ${theNum1}, Operator = ${theOperator} theNum2 = ${theNum2}`)}
+function showEqual() {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2); console.log(`In showEqual, theNum1 =  ${theNum1}, Operator = ${theOperator} theNum2 = ${theNum2}`)}
 
 //Find operator
 function operator(n) {
@@ -331,9 +339,9 @@ function removeTransition(e) {
 //4. Root square x ^ 0.5 //√
 //5. to the power
 
-let test1 = '1234567890';
-console.log(test1.slice(0,-1));
+// let test1 = '1234567890';
+// console.log(test1.slice(0,-1));
 
-getNum1.addEventListener("keydown", (e) => {(console.log(e));
+// getNum1.addEventListener("keydown", (e) => {(console.log(e));
 
-  });
+//   });
