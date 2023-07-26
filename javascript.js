@@ -109,35 +109,6 @@ getNum9.addEventListener('click', () => {addTransition(getNum9); resetRoutes(); 
 getNumDot.addEventListener('click', funcDot);
 getPi.addEventListener('click', funcPi);
 
-getFact.addEventListener('click', () => {addTransition(getFact); calcRoutes2(); theOperator = '!'; operator('!'); showMiniDisplay(' ! ')});
-getPerc.addEventListener('click', () => {addTransition(getPerc); calcRoutes2(); theOperator = '%'; operator('%'); showMiniDisplay(' % ')});
-getFib.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')});
-getPowerSquared.addEventListener('click', () => {addTransition(getPowerSquared); calcRoutes2(); theOperator = '^2'; operator('^2'); showMiniDisplay(' ^ 2 ')});
-getRoot.addEventListener('click', () => {addTransition(getRoot); calcRoutes2(); theOperator = '√'; operator('√'); showMiniDisplay(' √')});
-
-getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
-getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual()});
-
-// //Get keyboard Input
-// getNum0.addEventListener('click', () => {addTransition(getNum0); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("0"); showMiniDisplay(0)});
-// getNum1.addEventListener('keydown', () => {addTransition(getNum1); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("1"); showMiniDisplay(1)});
-// getNum2.addEventListener('click', () => {addTransition(getNum2); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("2"); showMiniDisplay(2)});
-// getNum3.addEventListener('click', () => {addTransition(getNum3); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("3"); showMiniDisplay(3)});
-// getNum4.addEventListener('click', () => {addTransition(getNum4); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("4"); showMiniDisplay(4)});
-// getNum5.addEventListener('click', () => {addTransition(getNum5); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("5"); showMiniDisplay(5)});
-// getNum6.addEventListener('click', () => {addTransition(getNum6); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("6"); showMiniDisplay(6)});
-// getNum7.addEventListener('click', () => {addTransition(getNum7); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("7"); showMiniDisplay(7)});
-// getNum8.addEventListener('click', () => {addTransition(getNum8); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("8"); showMiniDisplay(8)});
-// getNum9.addEventListener('click', () => {addTransition(getNum9); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("9"); showMiniDisplay(9)});
-// getNumDot.addEventListener('click', funcDot);
-
-// getFact.addEventListener('click', () => {addTransition(getFact); calcRoutes2(); theOperator = '!'; operator('!'); showMiniDisplay(' ! ')});
-// getPerc.addEventListener('click', () => {addTransition(getPerc); calcRoutes2(); theOperator = '%'; operator('%'); showMiniDisplay(' % ')});
-// getFib.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')});
-
-// getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
-// getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual()});
-
 //Operators
 getAdd.addEventListener('click', funcAdd);
 getSub.addEventListener('click', funcSub);
@@ -145,14 +116,31 @@ getMulti.addEventListener('click', funcMulti);
 getDivide.addEventListener('click', funcDivide);
 getPower.addEventListener('click', funcPower);
 
+getFact.addEventListener('click', funcFact);
+getPerc.addEventListener('click', funcPerc);
+getFib.addEventListener('click', funcFib);
+getPowerSquared.addEventListener('click', funcPoweredSquared);
+getRoot.addEventListener('click', funcRoot);
+
+getEquals.addEventListener('click', funcEquals);
+getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
+
 //Operator functions
-function funcAdd() {addTransition(getAdd); disableButtons(); calcRoutes(); operator('+'); theOperator = '+'; disableButtons(1); showMiniDisplay(' + ')};
-function funcSub() {addTransition(getSub); disableButtons(); calcRoutes(); operator('-'); theOperator = '-'; disableButtons(2); showMiniDisplay(' - ')};
-function funcMulti() {addTransition(getMulti); disableButtons(); calcRoutes(); operator('*'); theOperator = '*'; disableButtons(3); showMiniDisplay(' x ')};
-function funcDivide() {addTransition(getDivide); disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4); showMiniDisplay(' : ')};
-function funcPower() {addTransition(getPower); disableButtons(); calcRoutes(); operator('^'); theOperator = '^'; disableButtons(5); showMiniDisplay(' ^ ')};
-function funcDot() {addTransition(getNumDot); disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(".");disableButtons(5); disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay('.')};
-function funcPi() {addTransition(getPi); disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(`${Math.PI}`);disableButtons(5); disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay('π')};
+function funcAdd() {addTransition(getAdd); disableButtons(); calcRoutes(); operator('+'); theOperator = '+'; disableButtons(1); showMiniDisplay(' + '); disableDotButton(0); disablePi(0)};
+function funcSub() {addTransition(getSub); disableButtons(); calcRoutes(); operator('-'); theOperator = '-'; disableButtons(2); showMiniDisplay(' - '); disableDotButton(0); disablePi(0)};
+function funcMulti() {addTransition(getMulti); disableButtons(); calcRoutes(); operator('*'); theOperator = '*'; disableButtons(3); showMiniDisplay(' x '); disableDotButton(0); disablePi(0)};
+function funcDivide() {addTransition(getDivide); disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4); showMiniDisplay(' : '); disableDotButton(0); disablePi(0)};
+function funcPower() {addTransition(getPower); disableButtons(); calcRoutes(); operator('^'); theOperator = '^'; disableButtons(5); showMiniDisplay(' ^ '); disableDotButton(0); disablePi(0)};
+
+function funcFact() {addTransition(getFact); calcRoutes2(); theOperator = '!'; operator('!'); showMiniDisplay(' ! ')};
+function funcPerc() {addTransition(getPerc); calcRoutes2(); theOperator = '%'; operator('%'); showMiniDisplay(' % ')};
+function funcFib() {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')};
+function funcPoweredSquared() {addTransition(getPowerSquared); calcRoutes2(); theOperator = '^2'; operator('^2'); showMiniDisplay(' ^ 2 ')};
+function funcRoot() {addTransition(getRoot); calcRoutes2(); theOperator = '√'; operator('√'); showMiniDisplay(' √')};
+function funcEquals() {addTransition(getEquals); calcEquals()};
+
+function funcDot() {addTransition(getNumDot); disableDotButton(1); resetRoutes(); disableButtons(0); disableButtons(6); showDisplay(".");disableButtons(5); disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay('.'); disablePi(1)};
+function funcPi() {addTransition(getPi); disableDotButton(1); disablePi(1); resetRoutes(); disableButtons(0); showDisplay(`${Math.PI}`); showMiniDisplay('π')};
 
 // Number Display
 function showDisplay(num) {
@@ -185,7 +173,7 @@ function findShowOperator2(op) {
 }
 
 //Equals
-function calcEqual() {
+function calcEquals() {
     if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()}
     else if(route === 1) {theNum1 = result; theOperator = mem1; theNum2 = mem2; display.textContent = operate(theNum1, theOperator, theNum2); miniDisplayNum = `${result} | `; miniDisplay.textContent = miniDisplayNum}
     else {route = 1; 
@@ -238,6 +226,7 @@ function clearMemory() {
     displayNum = '';
     miniDisplayNum = '';
     disableButtons(0);
+    disableDotButton(0)
 }
 
 function completeClearMemory() {
@@ -257,6 +246,8 @@ function completeClearMemory() {
     result ='';
     route = 0;
     disableButtons(0);
+    disableDotButton(0)
+    disablePi(0);
 }
 
 function calcRoutes() {
@@ -277,25 +268,31 @@ function resetRoutes() {
     if(route == 1) {route = 0; result =''; theNum2 = ''};
 }
 
-//Disable operator button after 1 press.
+//Disable operator button after 1 press
 function disableButtons(n) {
     if(n == 1) {getAdd.removeEventListener("click", funcAdd)};
     if(n == 2) {getSub.removeEventListener("click", funcSub)};
     if(n == 3) {getMulti.removeEventListener("click", funcMulti)};
     if(n == 4) {getDivide.removeEventListener("click", funcDivide)};
     if(n == 5) {getPower.removeEventListener("click", funcPower)};
+    if(n == 6) {getEquals.removeEventListener("click", funcEquals)};
     if(n == 0) {getAdd.addEventListener('click', funcAdd);
                 getSub.addEventListener('click', funcSub);
                 getMulti.addEventListener('click', funcMulti);
                 getDivide.addEventListener('click', funcDivide);
-                getPower.addEventListener('click', funcPower);}
+                getPower.addEventListener('click', funcPower);
+                getEquals.addEventListener('click', funcEquals);
+            }
 };
 
-//Disable operator button after 1 press.
+//Disable operator button after 1 press
 function disableDotButton(n) {
-    if(n == 1) {getNumDot.removeEventListener("click", funcDot)}
-    if(n == 1) {getPi.removeEventListener("click", funcPi)}
-    if(n == 0) {getNumDot.addEventListener('click', funcDot)};
+    if(n == 1) {getNumDot.removeEventListener("click", funcDot)};
+    if(n == 0) {getNumDot.addEventListener('click', funcDot)}; 
+}
+//Disable Pi button
+function disablePi(n) {
+    if(n == 1) {getPi.removeEventListener("click", funcPi)};
     if(n == 0) {getPi.addEventListener('click', funcPi)};
 }
 
