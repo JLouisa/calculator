@@ -291,9 +291,10 @@ function removeTransition(e) {
 //Replace percentage with backspace
 //Keyboard input
 //1. Backspace
-//2. To The power
+//2. To The power square
 //3. Pi // π
 //4. Root square x ^ 0.5 //√
+//5. to the power
 
 let test1 = '1234567890';
 console.log(test1.slice(0,-1));

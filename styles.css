@@ -88,7 +88,7 @@ h1 {
     padding-right: 35px;
 }
 
-.row2col5 {
+.row2col5, .row5col5 {
     display: flex;
     padding: 40px 20px;
     text-align: center;
@@ -96,6 +96,26 @@ h1 {
     align-items: center;
 }
 
+.row1col4, .row1col3, .row1col5 {
+    display: flex;
+    padding: 40px 0px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.row2col1, .row1col2 {
+    padding: 40px 37px;
+}
+
 .row5col2.square {
     font-weight: 100;
+}
+
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+    top: -0.5em;
 }
