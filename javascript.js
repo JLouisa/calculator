@@ -101,7 +101,7 @@ getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual()
 
 // //Get keyboard Input
 // getNum0.addEventListener('click', () => {addTransition(getNum0); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("0"); showMiniDisplay(0)});
-// getNum1.addEventListener('click', () => {addTransition(getNum1); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("1"); showMiniDisplay(1)});
+// getNum1.addEventListener('keydown', () => {addTransition(getNum1); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("1"); showMiniDisplay(1)});
 // getNum2.addEventListener('click', () => {addTransition(getNum2); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("2"); showMiniDisplay(2)});
 // getNum3.addEventListener('click', () => {addTransition(getNum3); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("3"); showMiniDisplay(3)});
 // getNum4.addEventListener('click', () => {addTransition(getNum4); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("4"); showMiniDisplay(4)});
@@ -211,9 +211,6 @@ function clearMemory() {
     theNum1 = '';
     theNum2 = '';
     
-    // mem1 = '';
-    // mem2 = '';
-    
     theOperator = "";
     displayNum = '';
     miniDisplayNum = '';
@@ -291,3 +288,21 @@ function removeTransition(e) {
 //Pseudo Code
 //Add 0 standby blinking to display
 //Add punctuation in result
+//Replace percentage with backspace
+//Keyboard input
+//1. Backspace
+//2. To The power
+//3. Pi // π
+//4. Root square x ^ 0.5 //√
+
+let test1 = '1234567890';
+console.log(test1.slice(0,-1));
+
+getNum1.addEventListener("keydown", (e) => {(console.log(e));
+
+  });
+
+
+  function power(a, b) {result = Math.pow(a, b); return result};// x "<sup>y<sup>"
+  function root(a) {result = Math.pow(a, 0.5); return result}; //√
+  const pi = Math.PI; // π
