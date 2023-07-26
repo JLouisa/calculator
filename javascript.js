@@ -35,6 +35,7 @@ let theOperator = '';
 
 let mem1 = "";
 let mem2 = "";
+let mem3 = "";
 
 let result ='';
 let displayNum = '';
@@ -174,19 +175,20 @@ function findShowOperator2(op) {
 
 //Equals
 function calcEquals() {
-    if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {console.log('disable equal'); disableButtons(6)}
+    if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {console.log('disable equal 1'); disableButtons(6)}
+    if(result === Math.PI && result === Math.PI) {disableButtons(6); console.log(`disable equal 2, theNum1 =  ${theNum1}, Operator = ${theOperator}, theNum2 = ${theNum2}, result = ${result}`)}
     else if(route === 1) {
-        addTransition(getEquals); console.log('Already route 1'); 
-        theNum1 = result; theOperator = mem1; theNum2 = mem2; 
-        display.textContent = operate(theNum1, theOperator, theNum2);
+        addTransition(getEquals);
+        theNum1 = result; theOperator = mem1;
+        display.textContent = operate(theNum1, theOperator, mem3); console.log(`Already route 1, theNum1 =  ${theNum1}, Operator = ${theOperator}, theNum2 = ${theNum2}, result = ${result}, mem2 = ${mem2}`);
         miniDisplayNum = `${result} | `; 
         miniDisplay.textContent = miniDisplayNum}
-    else {route = 1; if(displayNum !== '' && theNum1 == '' && theNum2 == '') {console.log('Route 1');
+    else {route = 1; if(displayNum !== '' && theNum1 == '' && theNum2 == '') {disablePi(0); console.log('Route 1 here');
                     addTransition(getEquals);  
                     result = displayNum; displayNum = ''; 
                     display.textContent = result}
-                    else {if(result != '') {addTransition(getEquals); theNum1 = result; theNum2 = displayNum; showEqual(); clearMemory(); console.log('here1')}
-                    else {addTransition(getEquals); theNum2 = displayNum; mem2 = theNum2; showEqual(); clearMemory()}};
+                    else if(result != '') {addTransition(getEquals); theNum1 = result; theNum2 = displayNum; mem3 = theNum2; showEqual(); clearMemory(); console.log('look here')}
+                    else {addTransition(getEquals); theNum2 = displayNum; mem2 = theNum2; console.log('Why this?'); showEqual(); clearMemory()};
     
     usedEqual = true;
     showMiniDisplay(' | ');}
@@ -243,6 +245,7 @@ function completeClearMemory() {
     
     mem1 = "";
     mem2 = "";
+    mem3 = "";
     
     theOperator = '';
     displayNum = '';
