@@ -181,8 +181,8 @@ function calcEquals() {
     if(result === Math.PI && result === Math.PI) {disableButtons(6); console.log(`disable equal 2, theNum1 =  ${theNum1}, Operator = ${theOperator}, theNum2 = ${theNum2}, result = ${result}`)}
     else if(route === 1) {
         addTransition(getEquals);
-        theNum1 = result; theOperator = mem1;
-        display.textContent = operate(theNum1, theOperator, mem3); console.log(`Already route 1, theNum1 =  ${theNum1}, Operator = ${theOperator}, theNum2 = ${theNum2}, result = ${result}, mem2 = ${mem2}`);
+        theNum1 = result; theOperator = mem1; if(theNum2 == "") {theNum2 = mem3};
+        display.textContent = operate(theNum1, theOperator, theNum2); console.log(`Already route 1, theNum1 =  ${theNum1}, Operator = ${theOperator}, theNum2 = ${theNum2}, result = ${result}, mem2 = ${mem2}`);
         miniDisplayNum = `${result} | `; 
         miniDisplay.textContent = miniDisplayNum}
     else {route = 1; if(displayNum !== '' && theNum1 == '' && theNum2 == '') {disablePi(0); console.log('Route 1 here');
@@ -190,7 +190,7 @@ function calcEquals() {
                     result = displayNum; displayNum = ''; 
                     display.textContent = result}
                     else if(result != '') {addTransition(getEquals); theNum1 = result; theNum2 = displayNum; mem3 = theNum2; showEqual(); clearMemory(); console.log('look here')}
-                    else {addTransition(getEquals); theNum2 = displayNum; mem2 = theNum2; console.log('Why this?'); showEqual(); clearMemory()};
+                    else {addTransition(getEquals); theNum2 = displayNum; mem2 = theNum2; console.log('Why this?'); showEqual()};
     
     usedEqual = true;
     showMiniDisplay(' | ');}
