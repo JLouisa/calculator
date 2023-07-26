@@ -40,6 +40,7 @@ let mem3 = "";
 let result ='';
 let displayNum = '';
 let miniDisplayNum = '';
+let miniDisplayFinal = '';
 
 let route = 0;
 let disableButton = 0;
@@ -125,7 +126,7 @@ getPowerSquared.addEventListener('click', funcPowerSquared);
 getRoot.addEventListener('click', funcRoot);
 getEquals.addEventListener('click', funcEquals);
 
-useBackSpace.addEventListener('click', () => {addTransition(useBackSpace);});
+useBackSpace.addEventListener('click', () => {addTransition(useBackSpace); backSpaceRemove()});
 getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
 
 //Operator functions
@@ -157,6 +158,13 @@ function showMiniDisplay(d) {
     if(usedEqual === true) {miniDisplayNum = `${result}${d}`; miniDisplay.textContent = miniDisplayNum}
     else{miniDisplayNum += `${d}`; miniDisplay.textContent = miniDisplayNum};
     usedEqual = false;
+};
+
+//Backspace display
+function backSpaceRemove() {
+    miniDisplayNum += miniDisplayNum.slice(0,-1);
+    miniDisplay.textContent = miniDisplayNum;
+    console.log(`miniDisplayNum = ${miniDisplayNum} `);
 };
 
 //Operators function
