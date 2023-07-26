@@ -186,7 +186,7 @@ function calcEquals() {
                     result = displayNum; displayNum = ''; 
                     display.textContent = result}
                     else {if(result != '') {addTransition(getEquals); theNum1 = result; theNum2 = displayNum; showEqual(); clearMemory(); console.log('here1')}
-                    else {addTransition(getEquals); theNum2 = displayNum; showEqual(); clearMemory()}};
+                    else {addTransition(getEquals); theNum2 = displayNum; mem2 = theNum2; showEqual(); clearMemory()}};
     
     usedEqual = true;
     showMiniDisplay(' | ');}
@@ -213,9 +213,8 @@ function operator(n) {
         route = 6;
     }
 
-    if(route == 3){
+    if(route == 3){console.log('route 3')
         theNum1 = displayNum;
-        mem2 = displayNum;
         displayNum = '';
         findShowOperator(n);
     }
