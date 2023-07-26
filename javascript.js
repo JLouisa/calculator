@@ -52,7 +52,7 @@ function operate(n1, op, n2) {
     if(op == '-') {return calcSub(n1,n2)};
     if(op == '*') {return calcMulti(n1,n2)};
     if(op == '/') {return calcDivide(n1,n2)};
-    if(op == '^') {return calcDivide(n1,n2)};
+    if(op == '^') {return calcPower(n1,n2)};
     return 'Error1';
 }
 
@@ -329,4 +329,3 @@ console.log(test1.slice(0,-1));
 getNum1.addEventListener("keydown", (e) => {(console.log(e));
 
   });
-
