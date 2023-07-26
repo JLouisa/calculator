@@ -93,7 +93,7 @@ let getPowerSquared = document.querySelector('.row1col3');
 let getPower = document.querySelector('.row1col4');
 let getRoot = document.querySelector('.row1col5');
 let getClear = document.querySelector('.row2col1');
-let getEquals = document.querySelector('.row5col5');
+let getEquals = document.querySelector('.equal');
 
 //Get Clicked Input
 getNum0.addEventListener('click', () => {addTransition(getNum0); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("0"); showMiniDisplay(0)});
@@ -107,12 +107,13 @@ getNum7.addEventListener('click', () => {addTransition(getNum7); resetRoutes(); 
 getNum8.addEventListener('click', () => {addTransition(getNum8); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("8"); showMiniDisplay(8)});
 getNum9.addEventListener('click', () => {addTransition(getNum9); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("9"); showMiniDisplay(9)});
 getNumDot.addEventListener('click', funcDot);
+getPi.addEventListener('click', funcPi);
 
 getFact.addEventListener('click', () => {addTransition(getFact); calcRoutes2(); theOperator = '!'; operator('!'); showMiniDisplay(' ! ')});
 getPerc.addEventListener('click', () => {addTransition(getPerc); calcRoutes2(); theOperator = '%'; operator('%'); showMiniDisplay(' % ')});
 getFib.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')});
-getPowerSquared.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')});
-getRoot.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')});
+getPowerSquared.addEventListener('click', () => {addTransition(getPowerSquared); calcRoutes2(); theOperator = '^2'; operator('^2'); showMiniDisplay(' ^ 2 ')});
+getRoot.addEventListener('click', () => {addTransition(getRoot); calcRoutes2(); theOperator = '√'; operator('√'); showMiniDisplay(' √')});
 
 getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
 getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual()});
@@ -142,13 +143,16 @@ getAdd.addEventListener('click', funcAdd);
 getSub.addEventListener('click', funcSub);
 getMulti.addEventListener('click', funcMulti);
 getDivide.addEventListener('click', funcDivide);
+getPower.addEventListener('click', funcPower);
 
 //Operator functions
 function funcAdd() {addTransition(getAdd); disableButtons(); calcRoutes(); operator('+'); theOperator = '+'; disableButtons(1); showMiniDisplay(' + ')};
 function funcSub() {addTransition(getSub); disableButtons(); calcRoutes(); operator('-'); theOperator = '-'; disableButtons(2); showMiniDisplay(' - ')};
 function funcMulti() {addTransition(getMulti); disableButtons(); calcRoutes(); operator('*'); theOperator = '*'; disableButtons(3); showMiniDisplay(' x ')};
 function funcDivide() {addTransition(getDivide); disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4); showMiniDisplay(' : ')};
-function funcDot() {addTransition(getNumDot); disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(".");disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay('.')};
+function funcPower() {addTransition(getPower); disableButtons(); calcRoutes(); operator('^'); theOperator = '^'; disableButtons(5); showMiniDisplay(' ^ ')};
+function funcDot() {addTransition(getNumDot); disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(".");disableButtons(5); disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay('.')};
+function funcPi() {addTransition(getPi); disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(`${Math.PI}`);disableButtons(5); disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay(`${Math.PI}`)};
 
 // Number Display
 function showDisplay(num) {
@@ -170,21 +174,22 @@ function findShowOperator(op) {
     if(op == '-') {theOperator = '-'; display.textContent = theOperator};
     if(op == '*') {theOperator = '*'; display.textContent = "x"};
     if(op == '/') {theOperator = '/'; display.textContent = ":"};
+    if(op == '^') {theOperator = '^'; display.textContent = "^"};
     mem1 = op;
 };
 
 function findShowOperator2(op) {
-    if(op == '!' || op == '%' || op == 'Fib') {
+    if(op == '!' || op == '%' || op == 'Fib' || op == '√' || op == '^2') {
        theOperator = op; display.textContent = operate2(theNum1, theOperator)};
        mem1 = op;
 }
 
 //Equals
 function calcEqual() {
-    if(route === 1) {theNum1 = result; theOperator = mem1; theNum2 = mem2; display.textContent = operate(theNum1, theOperator, theNum2); miniDisplayNum = `${result} | `; miniDisplay.textContent = miniDisplayNum}
-    else{ route = 1;
-    if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()} 
-    else {if(displayNum !== '' && theNum1 == '' && theNum2 == '') {result = displayNum; displayNum = ''; display.textContent = result}
+    if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()}
+    else if(route === 1) {theNum1 = result; theOperator = mem1; theNum2 = mem2; display.textContent = operate(theNum1, theOperator, theNum2); miniDisplayNum = `${result} | `; miniDisplay.textContent = miniDisplayNum}
+    else {route = 1; 
+    {if(displayNum !== '' && theNum1 == '' && theNum2 == '') {result = displayNum; displayNum = ''; display.textContent = result}
     else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory()}};
     usedEqual = true;
     showMiniDisplay(' | ');}
@@ -278,16 +283,20 @@ function disableButtons(n) {
     if(n == 2) {getSub.removeEventListener("click", funcSub)};
     if(n == 3) {getMulti.removeEventListener("click", funcMulti)};
     if(n == 4) {getDivide.removeEventListener("click", funcDivide)};
+    if(n == 5) {getPower.removeEventListener("click", funcPower)};
     if(n == 0) {getAdd.addEventListener('click', funcAdd);
                 getSub.addEventListener('click', funcSub);
                 getMulti.addEventListener('click', funcMulti);
-                getDivide.addEventListener('click', funcDivide);}
+                getDivide.addEventListener('click', funcDivide);
+                getPower.addEventListener('click', funcPower);}
 };
 
 //Disable operator button after 1 press.
 function disableDotButton(n) {
     if(n == 1) {getNumDot.removeEventListener("click", funcDot)}
+    if(n == 1) {getPi.removeEventListener("click", funcPi)}
     if(n == 0) {getNumDot.addEventListener('click', funcDot)};
+    if(n == 0) {getPi.addEventListener('click', funcPi)};
 }
 
 function removeTransition(e) {
@@ -321,6 +330,3 @@ getNum1.addEventListener("keydown", (e) => {(console.log(e));
 
   });
 
-
-
-  const pi = Math.PI; // π
