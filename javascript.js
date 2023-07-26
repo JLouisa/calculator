@@ -137,7 +137,7 @@ function funcPerc() {addTransition(getPerc); calcRoutes2(); theOperator = '%'; o
 function funcFib() {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')};
 function funcPowerSquared() {addTransition(getPowerSquared); calcRoutes2(); theOperator = '^2'; operator('^2'); showMiniDisplay(' ^ 2 ')};
 function funcRoot() {addTransition(getRoot); calcRoutes2(); theOperator = '√'; operator('√'); showMiniDisplay(' √')};
-function funcEquals() {addTransition(getEquals); calcEquals()};
+function funcEquals() {calcEquals(); };
 
 function funcDot() {addTransition(getNumDot); disableDotButton(1); resetRoutes(); disableButtons(0); disableButtons(6); showDisplay(".");disableButtons(5); disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay('.'); disablePi(1)};
 function funcPi() {addTransition(getPi); disableDotButton(1); disablePi(1); resetRoutes(); disableButtons(0); showDisplay(`${Math.PI}`); showMiniDisplay('π')};
@@ -174,11 +174,12 @@ function findShowOperator2(op) {
 
 //Equals
 function calcEquals() {
-    if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {display.textContent = "0"; clearMemory()}
-    else if(route === 1) {theNum1 = result; theOperator = mem1; theNum2 = mem2; display.textContent = operate(theNum1, theOperator, theNum2); miniDisplayNum = `${result} | `; miniDisplay.textContent = miniDisplayNum}
-    else {route = 1; 
-    {if(displayNum !== '' && theNum1 == '' && theNum2 == '') {result = displayNum; displayNum = ''; display.textContent = result}
-    else {if(result != '') {theNum1 = result}; theNum2 = displayNum; showEqual(); clearMemory()}};
+    if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {console.log('Here1'); disableButtons(6)}
+    else if(route === 1) {addTransition(getEquals); console.log('Here'); theNum1 = result; theOperator = mem1; theNum2 = mem2; display.textContent = operate(theNum1, theOperator, theNum2); miniDisplayNum = `${result} | `; miniDisplay.textContent = miniDisplayNum}
+    else {route = 1; {
+        if(displayNum !== '' && theNum1 == '' && theNum2 == '') {addTransition(getEquals); console.log('Here2'); result = displayNum; displayNum = ''; display.textContent = result}
+        else {if(result != '') {addTransition(getEquals); theNum1 = result}
+            else {addTransition(getEquals); theNum2 = displayNum; showEqual(); clearMemory()}}};
     usedEqual = true;
     showMiniDisplay(' | ');}
 };
