@@ -156,23 +156,20 @@ function showDisplay(num) {
 // Mini Display
 function showMiniDisplay(d) {
     if(miniDisplayNum.length > 35) {return};
-    if(usedEqual === true) {miniDisplayNum = `${result}${d}`; miniDisplay.textContent = miniDisplayNum}
+    if(usedEqual === true) {miniDisplayNum = `${result}${d}`; miniDisplayFinal = miniDisplayNum; miniDisplay.textContent = miniDisplayFinal}
     else{miniDisplayNum += `${d}`; miniDisplay.textContent = miniDisplayNum};
-    if(d == ' + ' || d == ' - ' || d == ' x ' || d == ' : ' || d == ' ^ ') {
+    if(d === ' + ' || d == ' - ' || d == ' x ' || d == ' : ' || d == ' ^ ' || usedEqual == true) {
         miniDisplayFinal = miniDisplayNum.slice(); console.log('sliced')};
     usedEqual = false;
 };
 
 //Backspace display
-function backSpaceRemove() {
+function backSpaceRemove() {console.log(`miniDisplayNum = ${miniDisplayNum}`); console.log(`displayNum = ${displayNum} `);
     miniDisplayNum = miniDisplayNum.slice(0,-1);
-    miniDisplay.textContent = miniDisplayNum;
-    
-    console.log(`miniDisplayNum = ${miniDisplayNum}`);
-    console.log(`displayNum = ${displayNum} `);
     
     if(miniDisplayNum == "") {miniDisplay.textContent = 0}
     if(miniDisplayNum == "" && miniDisplayFinal!== "") {miniDisplay.textContent = miniDisplayFinal}
+    if(miniDisplayNum !== "") {miniDisplay.textContent = miniDisplayNum; console.log('Show mini')}
     
 
     displayNum = displayNum.slice(0,-1); display.textContent = displayNum
@@ -241,6 +238,8 @@ function operator(n) {
     if(route == 3){console.log('route 3')
         theNum1 = displayNum;
         displayNum = '';
+        // miniDisplay.textContent = miniDisplayFinal
+        // miniDisplayNum == "";
         findShowOperator(n);
     }
 
