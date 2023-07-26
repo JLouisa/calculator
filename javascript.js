@@ -100,16 +100,17 @@ let getClear = document.querySelector('.row2col1');
 let getEquals = document.querySelector('.equal');
 
 //Get Clicked Input
-getNum0.addEventListener('click', () => {addTransition(getNum0); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("0"); showMiniDisplay(0)});
-getNum1.addEventListener('click', () => {addTransition(getNum1); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("1"); showMiniDisplay(1)});
-getNum2.addEventListener('click', () => {addTransition(getNum2); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("2"); showMiniDisplay(2)});
-getNum3.addEventListener('click', () => {addTransition(getNum3); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("3"); showMiniDisplay(3)});
-getNum4.addEventListener('click', () => {addTransition(getNum4); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("4"); showMiniDisplay(4)});
-getNum5.addEventListener('click', () => {addTransition(getNum5); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("5"); showMiniDisplay(5)});
-getNum6.addEventListener('click', () => {addTransition(getNum6); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("6"); showMiniDisplay(6)});
-getNum7.addEventListener('click', () => {addTransition(getNum7); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("7"); showMiniDisplay(7)});
-getNum8.addEventListener('click', () => {addTransition(getNum8); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("8"); showMiniDisplay(8)});
-getNum9.addEventListener('click', () => {addTransition(getNum9); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("9"); showMiniDisplay(9)});
+getNum0.addEventListener('click', funcNum0);
+getNum1.addEventListener('click', funcNum1);
+getNum2.addEventListener('click', funcNum2);
+getNum3.addEventListener('click', funcNum3);
+getNum4.addEventListener('click', funcNum4);
+getNum5.addEventListener('click', funcNum5);
+getNum6.addEventListener('click', funcNum6);
+getNum7.addEventListener('click', funcNum7);
+getNum8.addEventListener('click', funcNum8);
+getNum9.addEventListener('click', funcNum9);
+
 getNumDot.addEventListener('click', funcDot);
 getPi.addEventListener('click', funcPi);
 
@@ -129,6 +130,18 @@ getEquals.addEventListener('click', funcEquals);
 
 useBackSpace.addEventListener('click', () => {addTransition(useBackSpace); backSpaceRemove()});
 getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
+
+//Number Functions
+function funcNum0() {addTransition(getNum0); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("0"); showMiniDisplay(0)}
+function funcNum1() {addTransition(getNum1); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("1"); showMiniDisplay(1)}
+function funcNum2() {addTransition(getNum2); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("2"); showMiniDisplay(2)}
+function funcNum3() {addTransition(getNum3); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("3"); showMiniDisplay(3)}
+function funcNum4() {addTransition(getNum4); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("4"); showMiniDisplay(4)}
+function funcNum5() {addTransition(getNum5); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("5"); showMiniDisplay(5)}
+function funcNum6() {addTransition(getNum6); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("6"); showMiniDisplay(6)}
+function funcNum7() {addTransition(getNum7); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("7"); showMiniDisplay(7)}
+function funcNum8() {addTransition(getNum8); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("8"); showMiniDisplay(8)}
+function funcNum9() {addTransition(getNum9); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("9"); showMiniDisplay(9)}
 
 //Operator functions
 function funcAdd() {addTransition(getAdd); disableButtons(); calcRoutes(); operator('+'); theOperator = '+'; disableButtons(1); showMiniDisplay(' + '); disableDotButton(0); disablePi(0)};
@@ -150,7 +163,7 @@ function funcPi() {addTransition(getPi); disableDotButton(1); disablePi(1); rese
 // Number Display
 function showDisplay(num) {
     if(displayNum.length > 20) {return} 
-    else {displayNum += num; display.textContent = displayNum;}
+    else {displayNum += num; display.textContent = displayNum; console.log("I'm here")}
 };
 
 // Mini Display
@@ -168,8 +181,8 @@ function backSpaceRemove() {console.log(`miniDisplayNum = ${miniDisplayNum}`); c
     miniDisplayNum = miniDisplayNum.slice(0,-1);
     
     if(miniDisplayNum == "") {miniDisplay.textContent = 0}
-    if(miniDisplayNum == "" && miniDisplayFinal!== "") {miniDisplay.textContent = miniDisplayFinal}
-    if(miniDisplayNum !== "") {miniDisplay.textContent = miniDisplayNum; console.log('Show mini')}
+    if(miniDisplayNum == "" && miniDisplayFinal!== "") {miniDisplay.textContent = miniDisplayFinal; console.log('Path 1')}
+    else if(miniDisplayNum !== "") {miniDisplay.textContent = miniDisplayNum; console.log('Show mini')}
     
 
     displayNum = displayNum.slice(0,-1); display.textContent = displayNum
@@ -272,6 +285,7 @@ function completeClearMemory() {
     theOperator = '';
     displayNum = '';
     miniDisplayNum = '';
+    miniDisplayFinal = '';
 
     display.textContent = 0;
     miniDisplay.textContent = 0;
@@ -373,3 +387,10 @@ function removeTransition(e) {
 // console.log(test2);
 // console.log(test1)
 // console.log(test3);
+
+const keyboardNum1 = document.querySelector('.nr1');
+
+document.addEventListener('keydown', (ev => {
+    console.log(ev.code);
+    if(ev.code == 'KeyQ') {funcAdd(); console.log('nice')};
+}))
