@@ -19,6 +19,15 @@ function calcFactorial(num1) {if(num1 == 0) {result = 1; return result} else {le
 // Calculate Fibonacci Sequence
 function calcFibonacci(num1) {if(num1 < 0) {result = "OOPS"; return result}; let seqFib = [0, 1]; let next = 0; for(i = 0; i < num1; i++) {next = seqFib[i] + seqFib[i+1]; seqFib.push(next);} result = seqFib[num1]; return result};
 
+//Calculate to the Power Square
+function calcPowerSquared(num1) {result = Math.pow(num1, 2); return result};
+
+// Calculate to the Power
+function calcPower(num1, num2) {result = Math.pow(num1, num2); return result};
+
+// Calculate Root
+function calcRoot(num1) {result = Math.pow(num1, 0.5); return result};
+
 // Input holders
 let theNum1 = '';
 let theNum2 = '';
@@ -43,6 +52,7 @@ function operate(n1, op, n2) {
     if(op == '-') {return calcSub(n1,n2)};
     if(op == '*') {return calcMulti(n1,n2)};
     if(op == '/') {return calcDivide(n1,n2)};
+    if(op == '^') {return calcDivide(n1,n2)};
     return 'Error1';
 }
 
@@ -50,6 +60,8 @@ function operate2(n1, op) {
     if(op == '!') {return calcFactorial(n1)};
     if(op == 'Fib') {return calcFibonacci(n1)};
     if(op == '%') {return calcPerc(n1)};
+    if(op == '^2') {return calcPowerSquared(n1)};
+    if(op == '√') {return calcRoot(n1)};
     return 'Error2';
 }
 
@@ -67,6 +79,7 @@ let getNum6 = document.querySelector('.nr6');
 let getNum7 = document.querySelector('.nr7');
 let getNum8 = document.querySelector('.nr8');
 let getNum9 = document.querySelector('.nr9');
+let getPi = document.querySelector('.row5col5');
 let getNumDot = document.querySelector('.nr10');
 
 let getAdd = document.querySelector('.row5col4');
@@ -76,6 +89,9 @@ let getDivide = document.querySelector('.row5col1');
 let getFact = document.querySelector('.row4col1');
 let getPerc = document.querySelector('.row3col1');
 let getFib = document.querySelector('.row2col5');
+let getPowerSquared = document.querySelector('.row1col3');
+let getPower = document.querySelector('.row1col4');
+let getRoot = document.querySelector('.row1col5');
 let getClear = document.querySelector('.row2col1');
 let getEquals = document.querySelector('.row5col5');
 
@@ -95,6 +111,8 @@ getNumDot.addEventListener('click', funcDot);
 getFact.addEventListener('click', () => {addTransition(getFact); calcRoutes2(); theOperator = '!'; operator('!'); showMiniDisplay(' ! ')});
 getPerc.addEventListener('click', () => {addTransition(getPerc); calcRoutes2(); theOperator = '%'; operator('%'); showMiniDisplay(' % ')});
 getFib.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')});
+getPowerSquared.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')});
+getRoot.addEventListener('click', () => {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')});
 
 getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
 getEquals.addEventListener('click', () => {addTransition(getEquals); calcEqual()});
@@ -304,6 +322,5 @@ getNum1.addEventListener("keydown", (e) => {(console.log(e));
   });
 
 
-  function power(a, b) {result = Math.pow(a, b); return result};// x "<sup>y<sup>"
-  function root(a) {result = Math.pow(a, 0.5); return result}; //√
+
   const pi = Math.PI; // π
