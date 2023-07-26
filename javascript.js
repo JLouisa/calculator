@@ -69,6 +69,7 @@ function operate2(n1, op) {
 // Calculator interface
 const display = document.querySelector('.mainDisplay');
 const miniDisplay = document.querySelector('.miniDisplay');
+const useBackSpace = document.querySelector('.row1col2');
 
 let getNum0 = document.querySelector('.nr0');
 let getNum1 = document.querySelector('.nr1');
@@ -122,8 +123,9 @@ getPerc.addEventListener('click', funcPerc);
 getFib.addEventListener('click', funcFib);
 getPowerSquared.addEventListener('click', funcPowerSquared);
 getRoot.addEventListener('click', funcRoot);
-
 getEquals.addEventListener('click', funcEquals);
+
+useBackSpace.addEventListener('click', () => {addTransition(useBackSpace);});
 getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
 
 //Operator functions

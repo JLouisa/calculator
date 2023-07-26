@@ -104,12 +104,17 @@ h1 {
     align-items: center;
 }
 
-.row2col1, .row1col2 {
+.row2col1 {
     padding: 40px 37px;
 }
 
 .row5col2.square {
     font-weight: 100;
+}
+
+.row1col2 {
+    font-size: 20px;
+    padding: 45px 30px;
 }
 
 sup {
