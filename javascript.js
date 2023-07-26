@@ -392,5 +392,40 @@ const keyboardNum1 = document.querySelector('.nr1');
 
 document.addEventListener('keydown', (ev => {
     console.log(ev.code);
-    if(ev.code == 'KeyQ') {funcAdd(); console.log('nice')};
+    // if(ev.code == 'KeyQ') {funcAdd(); console.log('nice')};
+
+
+Digit0 || Numpad0
+Digit1 || Numpad1
+Digit2 || Numpad2
+Digit3 || Numpad3
+Digit4 || Numpad4
+Digit5 || Numpad5
+Digit6 || Numpad6
+Digit7 || Numpad7
+Digit8 || Numpad8
+Digit9 || Numpad9
+
+NumpadAdd || ShiftLeft && Equal || ShiftRight && Equal
+NumpadSubtract || Minus
+NumpadMultiply || ShiftLeft && Digit8 || ShiftRight && Digit8
+NumpadDivide || ShiftLeft && Slash || ShiftRight && Slash
+
+Equal || NumpadEnter
+
+Period || NumpadDecimal
+
+KeyF //Fib
+KeyR //Root
+KeyS //SquarePower
+KeyP //Pi
+
+Backspace
+Delete
+
+
+ShiftLeft && Digit5 || ShiftRight && Digit5 //%
+ShiftLeft && Digit1 || ShiftRight && Digit1 //Factorial
+ShiftLeft && Digit6 || ShiftRight && Digit6 //Power
+
 }))
