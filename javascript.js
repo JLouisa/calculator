@@ -47,6 +47,7 @@ let disableButton = 0;
 let disableDot = 0;
 
 let usedEqual = false;
+let usedOperator = false;
 
 //Operate point to function
 function operate(n1, op, n2) {
@@ -157,6 +158,8 @@ function showMiniDisplay(d) {
     if(miniDisplayNum.length > 35) {return};
     if(usedEqual === true) {miniDisplayNum = `${result}${d}`; miniDisplay.textContent = miniDisplayNum}
     else{miniDisplayNum += `${d}`; miniDisplay.textContent = miniDisplayNum};
+    if(d == ' + ' || d == ' - ' || d == ' x ' || d == ' : ' || d == ' ^ ') {
+        miniDisplayFinal = miniDisplayNum.slice(); console.log('sliced')};
     usedEqual = false;
 };
 
@@ -165,14 +168,16 @@ function backSpaceRemove() {
     miniDisplayNum = miniDisplayNum.slice(0,-1);
     miniDisplay.textContent = miniDisplayNum;
     
-    displayNum = displayNum.slice(0,-1);
-    display.textContent = displayNum;
-    
-    console.log(`miniDisplayNum = ${miniDisplayNum} `);
+    console.log(`miniDisplayNum = ${miniDisplayNum}`);
     console.log(`displayNum = ${displayNum} `);
-
+    
     if(miniDisplayNum == "") {miniDisplay.textContent = 0}
-    if(miniDisplayNum == "") {display.textContent = 0}
+    if(miniDisplayNum == "" && miniDisplayFinal!== "") {miniDisplay.textContent = miniDisplayFinal}
+    
+
+    displayNum = displayNum.slice(0,-1); display.textContent = displayNum
+    if(displayNum == "") {display.textContent = 0}
+    
 };
 
 //Operators function
@@ -359,9 +364,13 @@ function removeTransition(e) {
 //4. Root square x ^ 0.5 //√
 //5. to the power
 
-// let test1 = '1234567890';
-// console.log(test1.slice(0,-1));
-
 // getNum1.addEventListener("keydown", (e) => {(console.log(e));
 
 //   });
+
+// let test1 = '1234567890';
+// let test2 = test1.slice();
+// let test3 = test1.slice(0,-1);
+// console.log(test2);
+// console.log(test1)
+// console.log(test3);
