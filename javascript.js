@@ -152,7 +152,7 @@ function funcMulti() {addTransition(getMulti); disableButtons(); calcRoutes(); o
 function funcDivide() {addTransition(getDivide); disableButtons(); calcRoutes(); operator('/'); theOperator = '/'; disableButtons(4); showMiniDisplay(' : ')};
 function funcPower() {addTransition(getPower); disableButtons(); calcRoutes(); operator('^'); theOperator = '^'; disableButtons(5); showMiniDisplay(' ^ ')};
 function funcDot() {addTransition(getNumDot); disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(".");disableButtons(5); disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay('.')};
-function funcPi() {addTransition(getPi); disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(`${Math.PI}`);disableButtons(5); disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay(`${Math.PI}`)};
+function funcPi() {addTransition(getPi); disableDotButton(1); resetRoutes(); disableButtons(0); showDisplay(`${Math.PI}`);disableButtons(5); disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay('π')};
 
 // Number Display
 function showDisplay(num) {
