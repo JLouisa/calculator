@@ -162,9 +162,17 @@ function showMiniDisplay(d) {
 
 //Backspace display
 function backSpaceRemove() {
-    miniDisplayNum += miniDisplayNum.slice(0,-1);
+    miniDisplayNum = miniDisplayNum.slice(0,-1);
     miniDisplay.textContent = miniDisplayNum;
+    
+    displayNum = displayNum.slice(0,-1);
+    display.textContent = displayNum;
+    
     console.log(`miniDisplayNum = ${miniDisplayNum} `);
+    console.log(`displayNum = ${displayNum} `);
+
+    if(miniDisplayNum == "") {miniDisplay.textContent = 0}
+    if(miniDisplayNum == "") {display.textContent = 0}
 };
 
 //Operators function
