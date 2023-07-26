@@ -119,7 +119,7 @@ getPower.addEventListener('click', funcPower);
 getFact.addEventListener('click', funcFact);
 getPerc.addEventListener('click', funcPerc);
 getFib.addEventListener('click', funcFib);
-getPowerSquared.addEventListener('click', funcPoweredSquared);
+getPowerSquared.addEventListener('click', funcPowerSquared);
 getRoot.addEventListener('click', funcRoot);
 
 getEquals.addEventListener('click', funcEquals);
@@ -135,7 +135,7 @@ function funcPower() {addTransition(getPower); disableButtons(); calcRoutes(); o
 function funcFact() {addTransition(getFact); calcRoutes2(); theOperator = '!'; operator('!'); showMiniDisplay(' ! ')};
 function funcPerc() {addTransition(getPerc); calcRoutes2(); theOperator = '%'; operator('%'); showMiniDisplay(' % ')};
 function funcFib() {addTransition(getFib); calcRoutes2(); theOperator = 'Fib'; operator('Fib'); showMiniDisplay(' Fib ')};
-function funcPoweredSquared() {addTransition(getPowerSquared); calcRoutes2(); theOperator = '^2'; operator('^2'); showMiniDisplay(' ^ 2 ')};
+function funcPowerSquared() {addTransition(getPowerSquared); calcRoutes2(); theOperator = '^2'; operator('^2'); showMiniDisplay(' ^ 2 ')};
 function funcRoot() {addTransition(getRoot); calcRoutes2(); theOperator = '√'; operator('√'); showMiniDisplay(' √')};
 function funcEquals() {addTransition(getEquals); calcEquals()};
 
@@ -276,14 +276,24 @@ function disableButtons(n) {
     if(n == 4) {getDivide.removeEventListener("click", funcDivide)};
     if(n == 5) {getPower.removeEventListener("click", funcPower)};
     if(n == 6) {getEquals.removeEventListener("click", funcEquals)};
+    if(n == 2) {getFact.removeEventListener("click", funcFact);
+                getPerc.removeEventListener("click", funcPerc);
+                getFib.removeEventListener("click", funcFib);
+                getPowerSquared.removeEventListener("click", funcPowerSquared);
+                getRoot.removeEventListener("click", funcRoot)};
     if(n == 0) {getAdd.addEventListener('click', funcAdd);
                 getSub.addEventListener('click', funcSub);
                 getMulti.addEventListener('click', funcMulti);
                 getDivide.addEventListener('click', funcDivide);
                 getPower.addEventListener('click', funcPower);
                 getEquals.addEventListener('click', funcEquals);
-            }
-};
+                getFact.addEventListener("click", funcFact);
+                getPerc.addEventListener("click", funcPerc);
+                getFib.addEventListener("click", funcFib);
+                getPowerSquared.addEventListener("click", funcPowerSquared);
+                getRoot.addEventListener("click", funcRoot);
+                };
+}
 
 //Disable operator button after 1 press
 function disableDotButton(n) {
