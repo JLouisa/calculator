@@ -163,40 +163,40 @@ function funcPi() {addTransition(getPi); disableDotButton(1); disablePi(1); rese
 function funcBackspace() {addTransition(useBackSpace); backSpaceRemove()};
 function funcClear() {addTransition(getClear); completeClearMemory()};
 
-//Keyboard Shortcuts
+// Keyboard Shortcuts
 document.addEventListener('keydown', (ev => {
-    console.log(ev.code);
-    if(ev.code == "Digit0" || "Numpad0") {funcNum0()};
-    if(ev.code == "Digit1" || "Numpad1") {funcNum1()};
-    if(ev.code == "Digit2" || "Numpad2") {funcNum2()};
-    if(ev.code == "Digit3" || "Numpad3") {funcNum3()};
-    if(ev.code == "Digit4" || "Numpad4") {funcNum4()};
-    if(ev.code == "Digit5" || "Numpad5") {funcNum5()};
-    if(ev.code == "Digit6" || "Numpad6") {funcNum6()};
-    if(ev.code == "Digit7" || "Numpad7") {funcNum7()};
-    if(ev.code == "Digit8" || "Numpad8") {funcNum8()};
-    if(ev.code == "Digit9" || "Numpad9") {funcNum9()};
-    if(ev.code == "NumpadAdd" || "ShiftLeft" && "Equal" || "ShiftRight" && "Equal") {funcAdd()}
-    if(ev.code == "NumpadSubtract" || "Minus") {funcSub()}
-    if(ev.code == "NumpadMultiply" || "ShiftLeft" && "Digit8" || "ShiftRight" && "Digit8") {funcMulti()}
-    if(ev.code == "NumpadDivide" || "ShiftLeft" && "Slash" || "ShiftRight" && "Slash") {funcDivide()}
-    if(ev.code == "Equal" || "NumpadEnter") {funcEquals()}
-    if(ev.code == "Period" || "NumpadDecimal") {funcDot()}
-    if(ev.code == "KeyF") {funcFib()} //Fib
-    if(ev.code == "KeyR") {funcRoot()} //Root
-    if(ev.code == "KeyS") {funcPowerSquared()} //SquarePower
-    if(ev.code == "KeyP") {} //Pi
-    if(ev.code == "Backspace") {}
-    if(ev.code == "Delete") {}
-    if(ev.code == "ShiftLeft" && "Digit5" || "ShiftRight" && "Digit5") {funcPerc()} //%
-    if(ev.code == "ShiftLeft" && "Digit1" || "ShiftRight" && "Digit1") {funcFact()} //Factorial
-    if(ev.code == "ShiftLeft" && "Digit6" || "ShiftRight" && "Digit6") {funcPower()} //Power
+    console.log(ev);
+    if(ev.code === "Digit0" || ev.code === "Numpad0") {funcNum0()};
+    if(ev.code === "Digit1" || ev.code === "Numpad1") {funcNum1()};
+    if(ev.code === "Digit2" || ev.code === "Numpad2") {funcNum2()};
+    if(ev.code === "Digit3" || ev.code === "Numpad3") {funcNum3()};
+    if(ev.code === "Digit4" || ev.code === "Numpad4") {funcNum4()};
+    if(ev.code === "Digit5" || ev.code === "Numpad5") {funcNum5()};
+    if(ev.code === "Digit6" || ev.code === "Numpad6") {funcNum6()};
+    if(ev.code === "Digit7" || ev.code === "Numpad7") {funcNum7()};
+    if(ev.code === "Digit8" || ev.code === "Numpad8") {funcNum8()};
+    if(ev.code === "Digit9" || ev.code === "Numpad9") {funcNum9()};
+    if(ev.code === "NumpadAdd" || ev.shiftKey && ev.key === "+") {funcAdd()}
+    if(ev.code === "NumpadSubtract" || ev.code === "Minus") {funcSub()}
+    if(ev.code === "NumpadMultiply" || ev.shiftKey && ev.code === "Digit8" || ev.shiftKey && ev.code === "Digit8") {funcMulti()}
+    if(ev.code === "NumpadDivide" || ev.shiftKey && ev.code === "Slash" || ev.shiftKey && ev.code === "Slash") {funcDivide()}
+    if(ev.key === "=" || ev.code === "NumpadEnter") {funcEquals()}
+    if(ev.code === "Period" || ev.code === "NumpadDecimal") {funcDot()}
+    if(ev.code === "KeyF") {funcFib()} //Fib
+    if(ev.code === "KeyR") {funcRoot()} //Root
+    if(ev.code === "KeyS") {funcPowerSquared()} //SquarePower
+    if(ev.code === "KeyP") {} //Pi
+    if(ev.code === "Backspace" || ev.code === "Delete") {funcBackspace()};
+    if(ev.code === "Escape") {funcClear()};
+    if(ev.shiftKey && ev.code === "Digit5" || ev.shiftKey && ev.code === "Digit5") {funcPerc()} //%
+    if(ev.shiftKey && ev.code === "Digit1" || ev.shiftKey && ev.code === "Digit1") {funcFact()} //Factorial
+    if(ev.shiftKey && ev.code === "Digit6" || ev.shiftKey && ev.code === "Digit6") {funcPower()} //Power
 }))
 
 // Number Display
 function showDisplay(num) {
     if(displayNum.length > 20) {return} 
-    else {displayNum += num; display.textContent = displayNum; console.log("I'm here")}
+    else {displayNum += num; display.textContent = displayNum}
 };
 
 // Mini Display
@@ -205,17 +205,17 @@ function showMiniDisplay(d) {
     if(usedEqual === true) {miniDisplayNum = `${result}${d}`; miniDisplayFinal = miniDisplayNum; miniDisplay.textContent = miniDisplayFinal}
     else{miniDisplayNum += `${d}`; miniDisplay.textContent = miniDisplayNum};
     if(d === ' + ' || d == ' - ' || d == ' x ' || d == ' : ' || d == ' ^ ' || usedEqual == true) {
-        miniDisplayFinal = miniDisplayNum.slice(); console.log('sliced')};
+        miniDisplayFinal = miniDisplayNum.slice()};
     usedEqual = false;
 };
 
 //Backspace display
-function backSpaceRemove() {console.log(`miniDisplayNum = ${miniDisplayNum}`); console.log(`displayNum = ${displayNum} `);
+function backSpaceRemove() {
     miniDisplayNum = miniDisplayNum.slice(0,-1);
     
     if(miniDisplayNum == "") {miniDisplay.textContent = 0}
-    if(miniDisplayNum == "" && miniDisplayFinal!== "") {miniDisplay.textContent = miniDisplayFinal; console.log('Path 1')}
-    else if(miniDisplayNum !== "") {miniDisplay.textContent = miniDisplayNum; console.log('Show mini')}
+    if(miniDisplayNum == "" && miniDisplayFinal!== "") {miniDisplay.textContent = miniDisplayFinal}
+    else if(miniDisplayNum !== "") {miniDisplay.textContent = miniDisplayNum}
     
 
     displayNum = displayNum.slice(0,-1); display.textContent = displayNum
@@ -241,27 +241,27 @@ function findShowOperator2(op) {
 
 //Equals
 function calcEquals() {
-    if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {console.log('disable equal 1'); disableButtons(6)}
-    if(result === Math.PI && result === Math.PI) {disableButtons(6); console.log(`disable equal 2, theNum1 =  ${theNum1}, Operator = ${theOperator}, theNum2 = ${theNum2}, result = ${result}`)}
+    if(displayNum == '' && theNum1 === "" && theNum2 === "" && result === "") {disableButtons(6)}
+    if(result === Math.PI && result === Math.PI) {disableButtons(6)}
     else if(route === 1) {
         addTransition(getEquals);
         theNum1 = result; theOperator = mem1; if(theNum2 == "") {theNum2 = mem3};
-        display.textContent = operate(theNum1, theOperator, theNum2); console.log(`Already route 1, theNum1 =  ${theNum1}, Operator = ${theOperator}, theNum2 = ${theNum2}, result = ${result}, mem2 = ${mem2}`);
+        display.textContent = operate(theNum1, theOperator, theNum2);
         miniDisplayNum = `${result} | `; 
         miniDisplay.textContent = miniDisplayNum}
-    else {route = 1; if(displayNum !== '' && theNum1 == '' && theNum2 == '') {disablePi(0); console.log('Route 1 here');
+    else {route = 1; if(displayNum !== '' && theNum1 == '' && theNum2 == '') {disablePi(0);
                     addTransition(getEquals);  
                     result = displayNum; displayNum = ''; 
                     display.textContent = result}
-                    else if(result != '') {addTransition(getEquals); theNum1 = result; theNum2 = displayNum; mem3 = theNum2; showEqual(); clearMemory(); console.log('look here')}
-                    else {addTransition(getEquals); theNum2 = displayNum; mem2 = theNum2; console.log('Why this?'); showEqual()};
+                    else if(result != '') {addTransition(getEquals); theNum1 = result; theNum2 = displayNum; mem3 = theNum2; showEqual(); clearMemory()}
+                    else {addTransition(getEquals); theNum2 = displayNum; mem2 = theNum2; showEqual()};
     
     usedEqual = true;
     showMiniDisplay(' | ');}
 };
 
 // Equals part calculation
-function showEqual() {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2); console.log(`In showEqual, theNum1 =  ${theNum1}, Operator = ${theOperator} theNum2 = ${theNum2}`)}
+function showEqual() {displayNum = ''; display.textContent = operate(theNum1, theOperator, theNum2)}
 
 //Find operator
 function operator(n) {
@@ -281,7 +281,7 @@ function operator(n) {
         route = 6;
     }
 
-    if(route == 3){console.log('route 3')
+    if(route == 3){
         theNum1 = displayNum;
         displayNum = '';
         // miniDisplay.textContent = miniDisplayFinal
