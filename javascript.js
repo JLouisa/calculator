@@ -167,30 +167,29 @@ function funcClear() {addTransition(getClear); completeClearMemory()};
 document.addEventListener('keydown', (ev => {
     console.log(ev);
     if(ev.code === "Digit0" || ev.code === "Numpad0") {funcNum0()};
-    if(ev.code === "Digit1" || ev.code === "Numpad1") {funcNum1()};
+    if(!ev.shiftKey && ev.code === "Digit1" || ev.code === "Numpad1") {funcNum1()};
     if(ev.code === "Digit2" || ev.code === "Numpad2") {funcNum2()};
     if(ev.code === "Digit3" || ev.code === "Numpad3") {funcNum3()};
     if(ev.code === "Digit4" || ev.code === "Numpad4") {funcNum4()};
-    if(ev.code === "Digit5" || ev.code === "Numpad5") {funcNum5()};
-    if(ev.code === "Digit6" || ev.code === "Numpad6") {funcNum6()};
+    if(!ev.shiftKey && ev.code === "Digit5" || ev.code === "Numpad5") {funcNum5()};
+    if(!ev.shiftKey && ev.code === "Digit6" || ev.code === "Numpad6") {funcNum6()};
     if(ev.code === "Digit7" || ev.code === "Numpad7") {funcNum7()};
-    if(ev.code === "Digit8" || ev.code === "Numpad8") {funcNum8()};
+    if(!ev.shiftKey && ev.code === "Digit8" || ev.code === "Numpad8") {funcNum8()};
     if(ev.code === "Digit9" || ev.code === "Numpad9") {funcNum9()};
-    if(ev.code === "NumpadAdd" || ev.shiftKey && ev.key === "+") {funcAdd()}
+    if(ev.code === "NumpadAdd" || ev.shiftKey && ev.code === "Equal") {funcAdd()}
     if(ev.code === "NumpadSubtract" || ev.code === "Minus") {funcSub()}
-    if(ev.code === "NumpadMultiply" || ev.shiftKey && ev.code === "Digit8" || ev.shiftKey && ev.code === "Digit8") {funcMulti()}
-    if(ev.code === "NumpadDivide" || ev.shiftKey && ev.code === "Slash" || ev.shiftKey && ev.code === "Slash") {funcDivide()}
-    if(ev.key === "=" || ev.code === "NumpadEnter") {funcEquals()}
+    if(ev.code === "NumpadMultiply" || ev.shiftKey && ev.code === "Digit8") {funcMulti()}
+    if(ev.code === "NumpadDivide" || ev.shiftKey && ev.code === "Slash") {funcDivide()}
+    if(!ev.shiftKey && ev.code === "Equal" || ev.code === "NumpadEnter") {funcEquals()}
     if(ev.code === "Period" || ev.code === "NumpadDecimal") {funcDot()}
-    if(ev.code === "KeyF") {funcFib()} //Fib
-    if(ev.code === "KeyR") {funcRoot()} //Root
-    if(ev.code === "KeyS") {funcPowerSquared()} //SquarePower
-    if(ev.code === "KeyP") {} //Pi
+    if(ev.code === "KeyF") {funcFib()}
+    if(ev.code === "KeyR") {funcRoot()}
+    if(ev.code === "KeyP") {funcPowerSquared()}
     if(ev.code === "Backspace" || ev.code === "Delete") {funcBackspace()};
-    if(ev.code === "Escape") {funcClear()};
-    if(ev.shiftKey && ev.code === "Digit5" || ev.shiftKey && ev.code === "Digit5") {funcPerc()} //%
-    if(ev.shiftKey && ev.code === "Digit1" || ev.shiftKey && ev.code === "Digit1") {funcFact()} //Factorial
-    if(ev.shiftKey && ev.code === "Digit6" || ev.shiftKey && ev.code === "Digit6") {funcPower()} //Power
+    if(ev.code === "Escape" || ev.code === "KeyC") {funcClear()};
+    if(ev.shiftKey && ev.code === "Digit5") {funcPerc()}
+    if(ev.shiftKey && ev.code === "Digit1") {funcFact()}
+    if(ev.shiftKey && ev.code === "Digit6") {funcPower()}
 }))
 
 // Number Display
