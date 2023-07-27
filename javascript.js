@@ -128,8 +128,8 @@ getPowerSquared.addEventListener('click', funcPowerSquared);
 getRoot.addEventListener('click', funcRoot);
 getEquals.addEventListener('click', funcEquals);
 
-useBackSpace.addEventListener('click', () => {addTransition(useBackSpace); backSpaceRemove()});
-getClear.addEventListener('click', () => {addTransition(getClear); completeClearMemory()});
+useBackSpace.addEventListener('click', funcBackspace);
+getClear.addEventListener('click', funcClear);
 
 //Number Functions
 function funcNum0() {addTransition(getNum0); resetRoutes(); disableDotButton(0); disableButtons(0); showDisplay("0"); showMiniDisplay(0)}
@@ -159,6 +159,39 @@ function funcEquals() {calcEquals(); };
 
 function funcDot() {addTransition(getNumDot); disableDotButton(1); resetRoutes(); disableButtons(0); disableButtons(6); showDisplay(".");disableButtons(5); disableButtons(1); disableButtons(2); disableButtons(3); disableButtons(4); showMiniDisplay('.'); disablePi(1)};
 function funcPi() {addTransition(getPi); disableDotButton(1); disablePi(1); resetRoutes(); disableButtons(0); showDisplay(`${Math.PI}`); showMiniDisplay('π')};
+
+function funcBackspace() {addTransition(useBackSpace); backSpaceRemove()};
+function funcClear() {addTransition(getClear); completeClearMemory()};
+
+//Keyboard Shortcuts
+document.addEventListener('keydown', (ev => {
+    console.log(ev.code);
+    if(ev.code == "Digit0" || "Numpad0") {funcNum0()};
+    if(ev.code == "Digit1" || "Numpad1") {funcNum1()};
+    if(ev.code == "Digit2" || "Numpad2") {funcNum2()};
+    if(ev.code == "Digit3" || "Numpad3") {funcNum3()};
+    if(ev.code == "Digit4" || "Numpad4") {funcNum4()};
+    if(ev.code == "Digit5" || "Numpad5") {funcNum5()};
+    if(ev.code == "Digit6" || "Numpad6") {funcNum6()};
+    if(ev.code == "Digit7" || "Numpad7") {funcNum7()};
+    if(ev.code == "Digit8" || "Numpad8") {funcNum8()};
+    if(ev.code == "Digit9" || "Numpad9") {funcNum9()};
+    if(ev.code == "NumpadAdd" || "ShiftLeft" && "Equal" || "ShiftRight" && "Equal") {funcAdd()}
+    if(ev.code == "NumpadSubtract" || "Minus") {funcSub()}
+    if(ev.code == "NumpadMultiply" || "ShiftLeft" && "Digit8" || "ShiftRight" && "Digit8") {funcMulti()}
+    if(ev.code == "NumpadDivide" || "ShiftLeft" && "Slash" || "ShiftRight" && "Slash") {funcDivide()}
+    if(ev.code == "Equal" || "NumpadEnter") {funcEquals()}
+    if(ev.code == "Period" || "NumpadDecimal") {funcDot()}
+    if(ev.code == "KeyF") {funcFib()} //Fib
+    if(ev.code == "KeyR") {funcRoot()} //Root
+    if(ev.code == "KeyS") {funcPowerSquared()} //SquarePower
+    if(ev.code == "KeyP") {} //Pi
+    if(ev.code == "Backspace") {}
+    if(ev.code == "Delete") {}
+    if(ev.code == "ShiftLeft" && "Digit5" || "ShiftRight" && "Digit5") {funcPerc()} //%
+    if(ev.code == "ShiftLeft" && "Digit1" || "ShiftRight" && "Digit1") {funcFact()} //Factorial
+    if(ev.code == "ShiftLeft" && "Digit6" || "ShiftRight" && "Digit6") {funcPower()} //Power
+}))
 
 // Number Display
 function showDisplay(num) {
@@ -387,45 +420,3 @@ function removeTransition(e) {
 // console.log(test2);
 // console.log(test1)
 // console.log(test3);
-
-const keyboardNum1 = document.querySelector('.nr1');
-
-document.addEventListener('keydown', (ev => {
-    console.log(ev.code);
-    // if(ev.code == 'KeyQ') {funcAdd(); console.log('nice')};
-
-
-Digit0 || Numpad0
-Digit1 || Numpad1
-Digit2 || Numpad2
-Digit3 || Numpad3
-Digit4 || Numpad4
-Digit5 || Numpad5
-Digit6 || Numpad6
-Digit7 || Numpad7
-Digit8 || Numpad8
-Digit9 || Numpad9
-
-NumpadAdd || ShiftLeft && Equal || ShiftRight && Equal
-NumpadSubtract || Minus
-NumpadMultiply || ShiftLeft && Digit8 || ShiftRight && Digit8
-NumpadDivide || ShiftLeft && Slash || ShiftRight && Slash
-
-Equal || NumpadEnter
-
-Period || NumpadDecimal
-
-KeyF //Fib
-KeyR //Root
-KeyS //SquarePower
-KeyP //Pi
-
-Backspace
-Delete
-
-
-ShiftLeft && Digit5 || ShiftRight && Digit5 //%
-ShiftLeft && Digit1 || ShiftRight && Digit1 //Factorial
-ShiftLeft && Digit6 || ShiftRight && Digit6 //Power
-
-}))
