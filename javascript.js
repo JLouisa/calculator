@@ -165,7 +165,6 @@ function funcClear() {addTransition(getClear); completeClearMemory()};
 
 // Keyboard Shortcuts
 document.addEventListener('keydown', (ev => {
-    console.log(ev);
     if(ev.code === "Digit0" || ev.code === "Numpad0") {funcNum0()};
     if(!ev.shiftKey && ev.code === "Digit1" || ev.code === "Numpad1") {funcNum1()};
     if(ev.code === "Digit2" || ev.code === "Numpad2") {funcNum2()};
@@ -184,7 +183,8 @@ document.addEventListener('keydown', (ev => {
     if(ev.code === "Period" || ev.code === "NumpadDecimal") {funcDot()}
     if(ev.code === "KeyF") {funcFib()}
     if(ev.code === "KeyR") {funcRoot()}
-    if(ev.code === "KeyP") {funcPowerSquared()}
+    if(ev.code === "KeyS") {funcPowerSquared()}
+    if(ev.code === "KeyP") {funcPi()}
     if(ev.code === "Backspace" || ev.code === "Delete") {funcBackspace()};
     if(ev.code === "Escape" || ev.code === "KeyC") {funcClear()};
     if(ev.shiftKey && ev.code === "Digit5") {funcPerc()}
@@ -399,23 +399,6 @@ function removeTransition(e) {
   window.addEventListener('clicked', addTransition)
 
 //Pseudo Code
-//Add 0 standby blinking to display
-//Add punctuation in result
-//Replace percentage with backspace
-//Keyboard input
-//1. Backspace
-//2. To The power square
-//3. Pi // π
-//4. Root square x ^ 0.5 //√
-//5. to the power
-
-// getNum1.addEventListener("keydown", (e) => {(console.log(e));
-
-//   });
-
-// let test1 = '1234567890';
-// let test2 = test1.slice();
-// let test3 = test1.slice(0,-1);
-// console.log(test2);
-// console.log(test1)
-// console.log(test3);
+    //Add 0 standby blinking to display
+    //Add punctuation in result
+    //Backspace
